@@ -32,9 +32,18 @@ const EDGE=[[42.45,3.35],[42.6,3.55],[42.72,3.75],[42.8,3.95],[42.9,4.2],[43.0,4
 const PEAKS=[[43.395,3.685,175,4],[43.29,3.49,115,6],[43.15,3.07,214,9],[42.52,2.46,2784,6],[42.47,2.95,1250,8],[43.78,3.81,658,4],[44.12,3.58,1567,10],[43.21,5.37,432,6],[43.75,4.85,498,8],[43.33,5.75,1148,10]].map(a=>{const p=P(a[0],a[1]);return{x:p[0],y:p[1],e:a[2],w:a[3],sd:Math.random()*9};});
 const TOWNS=[['Sète',43.40,3.69,1.6,1],['Frontignan',43.445,3.76,.8,0],['Marseillan',43.33,3.55,.5,0],['Agde',43.285,3.48,1,1],['Valras',43.25,3.29,.6,0],['Gruissan',43.105,3.10,.6,1],['Port-la-Nouvelle',43.02,3.06,.6,1],['Leucate',42.91,3.05,.5,1],['Palavas',43.53,3.93,.9,1],['La Grande-Motte',43.56,4.07,1,0],['Le Grau-du-Roi',43.535,4.135,.8,1],['Saintes-Maries',43.45,4.43,.5,1]].map(a=>{const p=P(a[1],a[2]);return{n:a[0],x:p[0],y:p[1],s:a[3],lab:a[4]};});
 const PHARES=[[43.397,3.699,32,5],[43.49,4.14,27,10],[43.263,3.505,19,4]].map(a=>{const p=P(a[0],a[1]);return{x:p[0],y:p[1],e:a[2],per:a[3]};});
-const ZONES=[['Petits fonds de Sète',43.28,3.70],['Large d’Agde',43.15,3.52],['Plateau central',43.05,3.90],['Les accores',42.86,3.85],['Large de l’Espiguette',43.32,4.18]].map(a=>{const p=P(a[1],a[2]);return{n:a[0],x:p[0],y:p[1]};});
-const EOL=(()=>{const p=P(43.07,3.28);return{x:p[0],y:p[1],r:1.6};})();
+const ZONES=[['Petits fonds de Sète',43.28,3.70],['Large d’Agde',43.15,3.52],['Plateau central',43.14,3.86],['Les accores',42.79,3.92],['Large de l’Espiguette',43.32,4.18]].map(a=>{const p=P(a[1],a[2]);return{n:a[0],x:p[0],y:p[1]};});
+const EOLS=[["pg", "parc pilote EolMed", "parc pilote", "", "w", [[43.0119, 3.3045], [43.0205, 3.3113], [43.0364, 3.3333], [43.0254, 3.3485], [43.0079, 3.3251]]], ["pl", "parc pilote de Leucate", "parc pilote", "", "w", [[42.8417, 3.2299], [42.8655, 3.2519], [42.8574, 3.2681], [42.8336, 3.2461]]], ["n1", "AO6 + AO9 (Narbonnaise 1)", "AO6 + AO9", "Narbonnaise 1", "n", [[43.0516, 3.5506], [43.0532, 3.5662], [43.0557, 3.5844], [43.0591, 3.601], [43.0224, 3.6333], [42.9916, 3.6233], [43.0071, 3.5223], [43.0132, 3.5061]]], ["n2", "AO10 (Narbonnaise 2)", "AO10", "Narbonnaise 2", "w", [[42.9916, 3.6233], [42.9328, 3.6042], [42.9141, 3.5826], [42.957, 3.441], [43.0132, 3.5061], [43.0071, 3.5223]]], ["g1a", "AO10 (Golfe du Lion Centre)", "AO10", "Golfe du Lion Centre", "e", [[43.051, 3.9782], [42.9774, 3.8922], [43.0265, 3.8143], [43.1168, 3.9199]]], ["g1b", "AO10 (Golfe du Lion Centre)", "", "", "", [[42.9309, 3.9658], [42.9774, 3.8922], [43.051, 3.9782], [42.9445, 4.0724]]], ["g2", "AO10 (Golfe du Lion Centre)", "", "", "", [[43.0265, 3.8143], [42.9309, 3.9658], [42.9301, 3.9595], [42.8498, 3.7936], [42.87, 3.7274], [42.9913, 3.7731]]], ["f1", "AO6 + AO9 (Golfe de Fos 1)", "Fos 1 : AO6 + AO9", "Fos 2 : AO10", "w", [[43.1142, 4.6735], [43.0735, 4.6734], [43.0448, 4.5388], [43.0876, 4.5388], [43.1142, 4.6639]]], ["f2", "AO10 (Golfe de Fos 2)", "", "", "", [[43.0089, 4.5425], [43.0145, 4.5387], [43.0448, 4.5388], [43.0735, 4.6734], [43.1142, 4.6735], [43.1142, 4.682], [42.9928, 4.6784], [42.9738, 4.6549], [42.9744, 4.5753], [42.9863, 4.5687], [42.9986, 4.5495]]]].map(a=>{const poly=a[5].map(q=>P(q[0],q[1]));let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9;for(const p of poly){x0=Math.min(x0,p[0]);x1=Math.max(x1,p[0]);y0=Math.min(y0,p[1]);y1=Math.max(y1,p[1]);}return{k:a[0],n:a[1],l1:a[2],l2:a[3],pos:a[4],poly,bb:[x0,x1,y0,y1]};});
+const EOL=EOLS[0];
+function inEol(x,y,m){m=m||0;for(const e of EOLS){if(x<e.bb[0]-m||x>e.bb[1]+m||y<e.bb[2]-m||y>e.bb[3]+m)continue;if(pip(x,y,e.poly))return e;if(m){for(let i=0;i<e.poly.length;i++)if(segD(x,y,e.poly[i],e.poly[(i+1)%e.poly.length])<m)return e;}}return null;}
 const PORT=[0.49,-0.25],S0=[0.49,-0.3],ENTRY=[0.49,-1.5],MX0=-38,MX1=44,MY0=-50,MY1=6;
+/* ferry GNV Sète ⇄ Maroc (horaires fictifs) */
+const FKN=19,FR=[[ENTRY[0],ENTRY[1]-2.5],[ENTRY[0]-62*Math.sin(3*D2R),ENTRY[1]-2.5-62*Math.cos(3*D2R)]],FLEN=62;
+function fAlong(s){const k=s/FLEN;return[FR[0][0]+(FR[1][0]-FR[0][0])*k,FR[0][1]+(FR[1][1]-FR[0][1])*k];}
+function fS(f,t){const d=(t-f.t0)*FKN/60;return f.out?d:FLEN-d;}
+function fOn(f,t){const s=fS(f,t);return t>=f.t0&&s>=0&&s<=FLEN;}
+function fXY(f,t){return fAlong(clamp(fS(f,t),0,FLEN));}
+function fHead(f,t){const p=fXY(f,t),q=fXY(f,t+1);return Math.atan2(q[0]-p[0],q[1]-p[1]);}
 const LIGHTS_PORT=[{x:.36,y:-.72,c:'#FF3B30',t:'#D8342A'},{x:.62,y:-.72,c:'#2EE66B',t:'#1F9E4A'}];
 const JETS=[[[.36,-.72],[.12,-.6],[-.2,-.42]],[[.62,-.72],[.85,-.56],[1.05,-.3]]].map(j=>{const o=[];for(let i=0;i<j.length-1;i++){const a=j[i],b=j[i+1],n=Math.ceil(Math.hypot(b[0]-a[0],b[1]-a[1])/.02);for(let k=0;k<=n;k++)o.push([a[0]+(b[0]-a[0])*k/n,a[1]+(b[1]-a[1])*k/n]);}return o;});
 function pip(x,y,p){let c=false;for(let i=0,j=p.length-1;i<p.length;j=i++){const a=p[i],b=p[j];if(((a[1]>y)!=(b[1]>y))&&(x<(b[0]-a[0])*(y-a[1])/(b[1]-a[1])+a[0]))c=!c;}return c;}
@@ -43,7 +52,7 @@ function distCoast(x,y){let m=1e9;for(let i=0;i<COAST.length-1;i++){const d=segD
 function inLand(x,y){return pip(x,y,LAND)||pip(x,y,THAU);}
 function edgeY(x){const E=EDGE,n=E.length;if(x<=E[0][0])return E[0][1]+(x-E[0][0])*(E[1][1]-E[0][1])/(E[1][0]-E[0][0]);for(let i=0;i<n-1;i++)if(x<=E[i+1][0]){const t=(x-E[i][0])/(E[i+1][0]-E[i][0]);return E[i][1]+t*(E[i+1][1]-E[i][1]);}return E[n-1][1]+(x-E[n-1][0])*(E[n-1][1]-E[n-2][1])/(E[n-1][0]-E[n-2][0]);}
 function depthAt(x,y,dc){if(inLand(x,y))return -1;if(dc==null)dc=distCoast(x,y);const de=y-edgeY(x);if(de>0)return 3+197*Math.pow(dc/(dc+de),.9);return Math.min(2600,200+(-de)*140);}
-function illegal(x,y){if(inLand(x,y))return'Terre ! On ne passe pas par là.';const dc=distCoast(x,y);if(dc<3)return'Bande des 3 milles : chalut interdit.';if(Math.hypot(x-EOL.x,y-EOL.y)<EOL.r)return'Parc éolien : zone fermée à la pêche.';if(depthAt(x,y,dc)>1000)return'Plus de 1 000 m de fond : chalut interdit.';return null;}
+function illegal(x,y){if(inLand(x,y))return'Terre ! On ne passe pas par là.';const dc=distCoast(x,y);if(dc<3)return'Bande des 3 milles : chalut interdit.';{const e=inEol(x,y);if(e)return e.l1==='parc pilote'?'Parc éolien pilote : zone fermée à la pêche.':'Zone éolienne '+e.n+' : fermée au chalutage.';}if(depthAt(x,y,dc)>1000)return'Plus de 1 000 m de fond : chalut interdit.';return null;}
 function placeName(x,y,d){let best=null,bd=3.5;for(const z of ZONES){const q=Math.hypot(x-z.x,y-z.y);if(q<bd){bd=q;best=z.n;}}if(best)return best;if(d<0)return'Terre';if(d<60)return'Petits fonds';if(d<150)return'Plateau';if(d<260)return'Accores';return'Talus et canyons';}
 // coste échantillonnée pour la vue FPV
 const CS=[];for(let i=0;i<COAST.length-1;i++){const a=COAST[i],b=COAST[i+1],n=Math.max(1,Math.ceil(Math.hypot(b[0]-a[0],b[1]-a[1])/.12));for(let k=0;k<n;k++){const x=a[0]+(b[0]-a[0])*k/n,y=a[1]+(b[1]-a[1])*k/n;let e=7;for(const t of TOWNS){if(Math.hypot(x-t.x,y-t.y)<t.s*1.2)e=10+((CS.length*37)%11)*1.7;}CS.push({x,y,e});}}
@@ -53,19 +62,19 @@ const CLOUDS=[];for(let i=0;i<9;i++)CLOUDS.push({az:Math.random()*TAU,el:rnd(.03
 /* ================= paramètres du jeu (fictifs) ================= */
 const SPH=8; // secondes réelles par heure de jeu
 const THR=[{n:'ÉCO',kn:8,lh:100},{n:'ROUTE',kn:10,lh:138},{n:'PLEIN',kn:12,lh:300}];
-const TRAWL_KN=4.5,TRAWL_LH=138,IDLE_LH=12,FUEL_EUR=.7,TRAWL_MIN=180,HAUL_MIN=15,T_FIRST=360,T_CRIEE=1020,T_HARD=1140,EYE=6;
+const TRAWL_KN=3,TRAWL_LH=138,IDLE_LH=12,FUEL_EUR=.7,TRAWL_MIN=180,HAUL_MIN=15,T_FIRST=360,T_CRIEE=1050,T_HARD=1140,EYE=6;
 const SP=[['merlu','Merlu',5.5,'#9FB6D6'],['rouget','Rouget',6,'#E4574B'],['baudroie','Baudroie',7,'#8A6A4F'],['sole','Sole',12,'#D7B98E'],['poulpe','Poulpe',4.5,'#C77AA8'],['seiche','Seiche',4.5,'#B9A58C'],['calmar','Calmar',7,'#F0C9C0'],['grondin','Grondin',2.5,'#F08A3C'],['friture','Petite friture',2,'#C6D2DE']];
 const M0={rouget:.22,seiche:.15,poulpe:.15,merlu:.12,grondin:.12,friture:.24},M1={merlu:.38,baudroie:.2,calmar:.14,grondin:.1,rouget:.08,poulpe:.05,friture:.05};
 function mixAt(x,d){const sz=clamp((d-35)/150,0,1),ea=clamp((x-10)/10,0,1)*(1-sz);const w={};let s=0;for(const [k] of SP){w[k]=(M0[k]||0)*(1-sz)+(M1[k]||0)*sz+(k==='sole'?.14*ea:0);s+=w[k];}for(const k in w)w[k]/=s;return{w,sz};}
 function rate(x,y,d){if(d<15||d>1000)return 0;const bg=d<60?80:d<120?80-(d-60)*.16:d<220?70-(d-120)*.05:34;let s=.6;for(const p of G.patches){const q=(x-p.x)**2+(y-p.y)**2;if(q<30)s+=p.a*Math.exp(-q/(2*1.3*1.3));}return bg*s;}
-function randSea(dmin,dmax){for(let k=0;k<400;k++){const x=rnd(-34,40),y=rnd(-47,2);if(inLand(x,y))continue;const dc=distCoast(x,y);if(dc<3.2)continue;const d=depthAt(x,y,dc);if(d>=dmin&&d<=dmax&&Math.hypot(x-EOL.x,y-EOL.y)>EOL.r+.5)return[x,y];}return[5,-15];}
+function randSea(dmin,dmax){for(let k=0;k<400;k++){const x=rnd(-34,40),y=rnd(-47,2);if(inLand(x,y))continue;const dc=distCoast(x,y);if(dc<3.2)continue;const d=depthAt(x,y,dc);if(d>=dmin&&d<=dmax&&!inEol(x,y,.5))return[x,y];}return[5,-15];}
 
 /* ================= état ================= */
 function newGame(){
   const tram=Math.random()<.45;
   G={scene:'quai',phase:'quai',t:150,anim:0,fade:0,fadeDir:0,ui:{},
     boxes:{pile:8,done:0,drag:null,fly:[],fin:false},
-    boat:{x:S0[0],y:S0[1],h:180*D2R,spd:0},dest:null,thr:1,warp:1,steer:0,trawlTarget:null,
+    boat:{x:S0[0],y:S0[1],h:180*D2R,spd:0},dest:null,thr:1,warp:1,steer:0,trawlTarget:null,nsTold:false,ferries:[{t0:450,out:false},{t0:840,out:true}],
     fuel:0,trawls:[],tr:null,traitN:0,track:[],trackT:0,haulT:0,dist:0,arr:null,
     wind:{on:tram,from:tram?Math.round(rnd(12,13.5)*60):9999,k:0},
     patches:[],croches:[],boats:[],sonar:[],sonT:0,birds:[],msg:null};
@@ -86,14 +95,29 @@ function showLine(){const t=talk;$('tw-txt').innerHTML=t.lines[t.i];
 $('tw-next').onclick=()=>{if(!talk)return;if(talk.i<talk.lines.length-1){talk.i++;showLine();}else{const f=talk.onDone;talk=null;$('tw-talk').hidden=true;f&&f();}};
 $('tw-skip').onclick=()=>{if(!talk)return;talk.i=talk.lines.length-1;showLine();};
 function toast(t,c){if(G)G.msg={t,c:c||'#0012B5',life:3.6};}
+function noSteer(){G.steer=0;if(!G.nsTold){G.nsTold=true;say(['<b>Pas de coup de barre, chalut à l’eau !</b> Derrière nous, il y a des centaines de mètres de <b>funes</b>, les deux <b>panneaux</b> qui écartent le filet, les <b>bras</b> et le <b>bourrelet</b> qui racle le fond. Si on barre, les funes se croisent, les panneaux se couchent et le chalut s’emmêle, voire se déchire : journée perdue, et des milliers d’euros de matériel à réparer. Le cap se choisit <b>avant de filer</b>.'],null,{last:'Compris, on garde le cap →'});}else toast('Chalut à l’eau : on garde le cap !','#C4613A');}
+function radio(f){const tr=G.phase==='trawl',V='<span class="tw-vhf">VHF · canal 16</span>';
+ say([V+'<b>Vincent :</b> « Ferry GNV, ferry GNV, ici le chalutier '+(tr?'en pêche, chalut à l’eau, ':'')+'sur votre avant. Vous nous avez au radar ? »',
+  V+'<b>Ferry :</b> « Chalutier, ici le ferry, bien reçu, on vous a au radar. Nous faisons route '+(f.out?'au 183, vers le Maroc':'au 003, vers Sète')+', 19 nœuds, avec un horaire à tenir. <b>Nous maintenons cap et vitesse.</b> »',
+  'Tu as entendu ? Pour un navire de près de 200 m, ralentir ou changer de route coûte très cher en carburant et décale toute la ligne : <b>il ne se déroutera pas</b>. Sur le papier, un bateau en pêche est prioritaire (règle 18 du RIPAM, le code de la route en mer). En pratique, face à un géant pareil, c’est au pêcheur de s’adapter.',
+  tr?'Avec le chalut à l’eau, on ne peut pas s’écarter : <b>vire le chalut maintenant</b> (le bouton VIRER est débloqué), ou prie pour qu’il passe à bonne distance.':'On est en route : <b>touche le traceur</b> pour passer derrière lui, ou laisse-le passer avant de couper sa route.'],null,{last:'Compris →'});}
+function ferryDanger(){if(!G||!G.ferries)return false;const B=G.boat;for(const f of G.ferries){if(!f.warned||!fOn(f,G.t))continue;const p=fXY(f,G.t);if(Math.hypot(p[0]-B.x,p[1]-B.y)<5)return true;}return false;}
+function ferryHit(f){G.warp=1;if(G.phase==='trawl'){const T=G.tr;T.torn=true;for(const k in T.kg)T.kg[k]*=.4;T.kgTot*=.4;T.val*=.4;T.szw*=.4;say(['<b>Le ferry nous a frôlés !</b> Son étrave est passée à quelques dizaines de mètres, et son sillage a arraché une partie du chalut. On vire ce qui reste.'],()=>{if(G.phase==='trawl')startHaul();},{last:'On vire →'});}
+ else{G.t+=10;say(['<b>Le ferry nous a frôlés !</b> Vincent a dû mettre la barre toute et casser l’erre en catastrophe. Plus de peur que de mal, mais on a perdu du temps.'],null,{last:'Ouf →'});}}
+function updFerry(){const B=G.boat;for(const f of G.ferries){if(!fOn(f,G.t))continue;
+ if(!f.seen){f.seen=true;toast(f.out?'Le ferry GNV quitte Sète : sa route est en pointillés violets.':'Un ferry GNV fait route vers Sète : sa route est en pointillés violets.','#7A3FD0');}
+ const p=fXY(f,G.t),d=Math.hypot(p[0]-B.x,p[1]-B.y);if(d<.3&&!f.hit&&G.boat.y<-1.2){f.hit=true;ferryHit(f);return;}
+ if(!f.warned&&d<8&&G.boat.y<-1.2){const v=(G.phase==='trawl'?TRAWL_KN:B.spd)/60;let best=99;for(let k=0;k<=40;k++){if(!fOn(f,G.t+k))break;const q=fXY(f,G.t+k),bx=B.x+Math.sin(B.h)*v*k,by=B.y+Math.cos(B.h)*v*k;best=Math.min(best,Math.hypot(q[0]-bx,q[1]-by));}
+  if(best<1){f.warned=true;G.warp=1;radio(f);return;}}}}
 const INTRO=['Salut ! Moi c’est <b>Vincent</b>, le patron. Il est <b>2 h 30</b>, le port de Sète dort encore. Aujourd’hui, tu embarques avec moi sur un <b>chalutier</b> du golfe du Lion.',
  'Avant de partir, on range les <b>bacs à poisson</b> : ils sont empilés à l’arrière du pont. Mets-les à l’abri, dans la <b>partie couverte à l’avant</b>. Fais-les glisser un par un (ou touche la pile).'];
 function cabinLines(){const rz=ZONES[G.radio].n;
   const meteo=G.wind.on?'Météo marine : beau le matin, mais <b>tramontane</b> qui se lève vers <b>'+fmtT(G.wind.from)+'</b>, forte au large. Au retour, on l’aura dans le nez : ça ralentit et ça consomme.':'Météo marine : <b>beau temps</b>, mer peu agitée toute la journée.';
   return['Bienvenue dans la <b>timonerie</b>. Les deux Vierges veillent sur nous : on ne part jamais sans elles.',
   'Sur le <b>traceur</b>, choisis où pêcher. <b>Plus on va loin, plus les poissons sont gros</b>, mais plus on brûle de gasoil. Près de la côte, on économise, mais le poisson est plus petit, et il y a beaucoup de juvéniles.',
-  'Le premier trait se file à <b>6 h</b>. On en fait <b>trois de 3 heures</b>, et on doit être à quai pour la <b>criée à 17 h</b> au plus tard. Astuce : on peut chaluter en se rapprochant de Sète.',
-  'Le chalut est interdit dans la <b>bande des 3 milles</b>, dans le <b>parc éolien</b> et <b>au-delà de 1 000 m</b> de fond. Et gare aux <b>croches</b> ⚠ : une épave, et le filet est déchiré.',
+  'Le premier trait se file à <b>6 h</b>. On en fait <b>trois de 3 heures</b>, et on doit être à quai pour la <b>criée de 17 h</b> : on tolère une arrivée jusqu’à <b>17 h 30</b>, pas plus. Astuce : on peut chaluter en se rapprochant de Sète.',
+  'Le chalut est interdit dans la <b>bande des 3 milles</b>, dans les <b>zones éoliennes</b> (parcs pilotes, et futurs parcs des appels d’offres <b>AO6</b>, <b>AO9</b> et <b>AO10</b>) et <b>au-delà de 1 000 m</b> de fond. Et gare aux <b>croches</b> ⚠ : une épave, et le filet est déchiré.',
+  'Une fois le chalut filé, <b>on ne change plus de cap</b> : oriente le bateau avec ◀ ▶ avant de filer. Et surveille la <b>route du ferry</b> Sète ⇄ Maroc, en pointillés violets sur le traceur : lui ne s’arrêtera pas pour nous.',
   meteo+' À la radio, un collègue dit que ça donne bien vers <b>'+rz+'</b>.'];}
 
 /* ================= mise en page ================= */
@@ -119,9 +143,11 @@ function arrive(){const B=G.boat;B.spd=0;G.dest=null;
   if(G.phase==='return'){startArrival();return;}
   if(G.t<T_FIRST){G.phase='wait';toast('Sur zone. Le chalut se file à 6 h : on patiente.');}else{G.phase='idle';toast('Sur zone : file le chalut !');}}
 function startTrawl(){const B=G.boat;const why=illegal(B.x,B.y);if(why){toast(why,'#C4613A');return;}
+  if(illegal(B.x+Math.sin(B.h)*1.5,B.y+Math.cos(B.h)*1.5)){toast('Zone interdite droit devant : oriente le bateau avec ◀ ▶ avant de filer.','#C4613A');return;}
   G.phase='trawl';G.dest=null;G.trawlTarget=null;G.steer=0;const d=depthAt(B.x,B.y);
   G.tr={n:G.traitN+1,t0:G.t,min:0,kg:{},kgTot:0,under:0,waste:0,val:0,szw:0,torn:false,zone:placeName(B.x,B.y,d)};
-  toast('Chalut à l’eau ! Trait n° '+G.tr.n+' · '+G.tr.zone,'#0E8A72');}
+  let cut=null;for(let k=1;k<=18;k++){const dd=k/18*TRAWL_MIN/60*TRAWL_KN;if(illegal(B.x+Math.sin(B.h)*dd,B.y+Math.cos(B.h)*dd)){cut=Math.round(k/18*180);break;}}
+  toast(cut?'Chalut à l’eau ! Attention : zone interdite dans l’axe, le trait sera écourté (≈ '+fmtT(cut).replace(' h ','h')+').':'Chalut à l’eau ! Trait n° '+G.tr.n+' · '+G.tr.zone,cut?'#C4613A':'#0E8A72');}
 function startHaul(){G.phase='haul';G.haulT=0;G.boat.spd=0;G.traitN++;G.trawls.push(G.tr);G.steer=0;toast('Vincent descend sur le pont…','#0E8A72');
   G.vir={t:0,dur:10.4,boxFill:[0,0,0,0,0,0,0,0],sortI:0,sortT:0,T:G.tr,gm:HAUL_MIN+(G.tr.torn?30:0),fish:[],spawned:0,done:false};G.fadeDir=1;G.fadeCb=()=>{G.scene='virage';};}
 function goHome(){if(G.phase==='trawl'){toast('Vire d’abord le chalut.','#C4613A');return;}G.dest=PORT.slice();G.phase='return';G.via=Math.hypot(G.boat.x-ENTRY[0],G.boat.y-ENTRY[1])>.4?ENTRY.slice():null;toast('Cap sur Sète et la criée !','#0E8A72');}
@@ -131,10 +157,10 @@ function act(){const ph=G.phase;
     if(G.traitN>=3){goHome();return;}
     if(G.t<T_FIRST){if(ph==='idle'){G.phase='wait';}else toast('Le chalut se file à partir de 6 h.','#C4613A');return;}
     startTrawl();return;}
-  if(ph==='trawl'){if(G.tr.min>=60)startHaul();else toast('Laisse travailler le chalut au moins une heure.','#C4613A');}}
+  if(ph==='trawl'){if(G.tr.min>=60||ferryDanger())startHaul();else toast('Laisse travailler le chalut au moins une heure.','#C4613A');}}
 function actLabel(){const ph=G.phase;
   if(ph==='plan')return G.dest?['LARGUER LES AMARRES','LARGUER',1]:['CHOISIS UNE ZONE','ZONE ?',0];
-  if(ph==='trawl')return G.tr.min>=60?['VIRER LE CHALUT','VIRER',1]:['CHALUT À L’EAU…','PÊCHE…',0];
+  if(ph==='trawl')return G.tr.min>=60||ferryDanger()?['VIRER LE CHALUT','VIRER',1]:['CHALUT À L’EAU…','PÊCHE…',0];
   if(ph==='haul')return['ON VIRE…','ON VIRE…',0];
   if(ph==='return')return['CAP SUR SÈTE','RETOUR',0];
   if(ph==='end')return['À QUAI','À QUAI',0];
@@ -144,7 +170,7 @@ function actLabel(){const ph=G.phase;
 function plotClick(pt){if(G.phase==='haul'||G.phase==='end')return;
   if(inLand(pt[0],pt[1])){toast('Terre ! Choisis un point en mer.','#C4613A');return;}
   if(pt[0]<MX0||pt[0]>MX1||pt[1]<MY0||pt[1]>MY1)return;
-  if(G.phase==='trawl'){G.trawlTarget=Math.atan2(pt[0]-G.boat.x,pt[1]-G.boat.y);G.steer=0;toast('Le chalut vire doucement vers ce point.');return;}
+  if(G.phase==='trawl'){noSteer();return;}
   let p=pt;for(const z of ZONES)if(Math.hypot(pt[0]-z.x,pt[1]-z.y)<1.4)p=[z.x,z.y];
   G.dest=p.slice();if(G.phase!=='plan'){G.phase='transit';if(G.boat.y>-1.4&&Math.abs(G.boat.x-PORT[0])<1)G.via=ENTRY.slice();else G.via=null;}}
 function update(dt){
@@ -158,6 +184,7 @@ function update(dt){
   const warp=G.phase==='wait'?14:G.warp,dm=dt*60/SPH*warp;G.t+=dm;
   if(G.wind.on&&G.t>=G.wind.from)G.wind.k=Math.min(1,(G.t-G.wind.from)/60);
   const B=G.boat,dc=distCoast(B.x,B.y),wf=G.wind.k*clamp(dc/20,.3,1);let lh=IDLE_LH;
+  if((G.phase==='idle'||G.phase==='wait')&&G.steer)B.h+=G.steer*45*D2R*dt;
   if(G.phase==='transit'||G.phase==='return'){
     const tg=G.via||G.dest,dx=tg[0]-B.x,dy=tg[1]-B.y,dd=Math.hypot(dx,dy);turnTo(B,Math.atan2(dx,dy),Math.max(dt*40*D2R,dm*30*D2R));
     const into=Math.max(0,Math.cos(B.h-315*D2R));B.spd=THR[G.thr].kn*(1-.3*wf*into);lh=THR[G.thr].lh*(1+.35*wf);
@@ -165,10 +192,9 @@ function update(dt){
     const step=B.spd*dm/60;G.fuel+=lh*dm/60;
     if(dd<=step+.01){B.x=tg[0];B.y=tg[1];G.dist+=dd;if(G.via)G.via=null;else arrive();}else{B.x+=Math.sin(B.h)*step;B.y+=Math.cos(B.h)*step;G.dist+=step;}
   }else if(G.phase==='trawl'){
-    if(G.steer){B.h+=G.steer*35*D2R*dt;G.trawlTarget=null;}else if(G.trawlTarget!=null)turnTo(B,G.trawlTarget,Math.min(dm*6*D2R,dt*60*D2R));
     const ax=B.x+Math.sin(B.h)*1.1,ay=B.y+Math.cos(B.h)*1.1,why=illegal(ax,ay);
-    if(why&&G.trawlTarget==null){G.trawlTarget=B.h+Math.PI*.75;G.steer=0;toast(why+' On vire de bord.','#C4613A');}
-    if(G.trawlTarget!=null){let d=G.trawlTarget-B.h;while(d>Math.PI)d-=TAU;while(d<-Math.PI)d+=TAU;if(Math.abs(d)<.02&&!why)G.trawlTarget=null;}
+    if(why){toast(why.replace(/\.$/,'')+' droit devant : on vire le chalut.','#C4613A');startHaul();}
+    else{
     B.spd=TRAWL_KN;lh=TRAWL_LH*(1+.35*wf);const step=B.spd*dm/60;const nx=B.x+Math.sin(B.h)*step,ny=B.y+Math.cos(B.h)*step;
     if(!illegal(nx,ny)){B.x=nx;B.y=ny;G.dist+=step;}else{B.h+=dm*8*D2R;}
     G.fuel+=lh*dm/60;const T=G.tr;T.min+=dm;
@@ -176,14 +202,14 @@ function update(dt){
     let pk=0;for(const [k,,pr] of SP){const q=dk*m.w[k]*(1-u);T.kg[k]=(T.kg[k]||0)+q;pk+=m.w[k]*pr;}
     T.kgTot+=dk*(1-u);T.under+=dk*u;T.waste+=dk*.012;T.szw+=dk*(1-u)*m.sz;T.val+=dk*(1-u)*pk*sm;
     for(const c of G.croches)if(!T.torn&&Math.hypot(c.x-B.x,c.y-B.y)<.3){T.torn=true;c.hit=true;for(const k in T.kg)T.kg[k]*=.4;T.kgTot*=.4;T.val*=.4;T.szw*=.4;toast('CROCHE ! Le chalut s’est accroché sur une épave.','#C4613A');startHaul();break;}
-    if(G.phase==='trawl'&&T.min>=TRAWL_MIN)startHaul();
+    if(G.phase==='trawl'&&T.min>=TRAWL_MIN)startHaul();}
   }else if(G.phase==='haul'){B.spd=0;G.haulT+=dm;if(G.haulT>=HAUL_MIN+(G.tr.torn?30:0))showHaul();}
   else if(G.phase==='wait'){B.spd=0;if(G.t>=T_FIRST){G.phase='idle';toast('6 h : tu peux filer le chalut !','#0E8A72');}}
   else B.spd=0;
   if(G.phase!=='transit'&&G.phase!=='return'&&G.phase!=='trawl')G.fuel+=IDLE_LH*dm/60;
   G.trackT+=dm;if(G.trackT>=2){G.trackT=0;G.track.push([B.x,B.y,G.phase==='trawl']);if(G.track.length>900)G.track.shift();}
   G.sonT+=dm;if(G.sonT>=1){G.sonT=0;const d=depthAt(B.x,B.y,dc);G.sonar.push({d:Math.max(5,d),f:clamp(rate(B.x,B.y,d)/120,0,1.6),sd:Math.random()*999,tr:G.phase==='trawl'});if(G.sonar.length>170)G.sonar.shift();}
-  updBoats(dm);
+  updBoats(dm);if(!talk)updFerry();
   if(G.t>=T_HARD&&G.phase!=='end')finish(true);
 }
 function updBoats(dm){for(const b of G.boats){let tx=null,ty=null,sp=0;
@@ -221,7 +247,7 @@ function finish(forced){if(G.phase==='end')return;const late=G.t>T_CRIEE;G.phase
   if(G.trawls.some(t=>t.torn))tips.push('Une croche a coûté un trait.');
   if(G.wind.on&&G.wind.k>.5)tips.push('La tramontane a pesé sur le retour.');
   const lines=[head,'<div class="tw-sum"><div><b>'+nf(kg)+' kg</b><span>pêchés en '+G.trawls.length+' trait'+(G.trawls.length>1?'s':'')+'</span></div><div><b>'+nf(sale)+' €</b><span>vente estimée</span></div><div class="neg"><b>− '+nf(fe)+' €</b><span>'+nf(G.fuel)+' L de gasoil</span></div><div class="'+(res>=0?'pos':'neg')+'"><b>'+(res>=0?'':'− ')+nf(Math.abs(res))+' €</b><span>résultat de la journée</span></div></div>'+tips.join(' ')+
-   ' Prochaine étape : la <b>criée</b>, où le poisson est vendu aux enchères.<div class="tw-fine">Prix moyen à la criée ≈ 5 €/kg, gasoil 0,70 €/L. Captures et fonds : fictifs, pour le jeu. Consommations : ordres de grandeur d’un chalutier (8 nœuds : 100 L/h ; 10 nœuds : 138 L/h ; 12 nœuds : 300 L/h ; en pêche à 4,5 nœuds : 138 L/h). Règles réelles : chalut interdit dans la bande des 3 milles et au-delà de 1 000 m de fond ; tailles minimales, par exemple merlu 20 cm, rouget 11 cm, sole 20 cm (règlement UE 1967/2006).</div>'];
+   ' Prochaine étape : la <b>criée</b>, où le poisson est vendu aux enchères.<div class="tw-fine">Prix moyen à la criée ≈ 5 €/kg, gasoil 0,70 €/L. Captures et fonds : fictifs, pour le jeu. Consommations : ordres de grandeur d’un chalutier (8 nœuds : 100 L/h ; 10 nœuds : 138 L/h ; 12 nœuds : 300 L/h ; en pêche à 3 nœuds : 138 L/h). Règles réelles : chalut interdit dans la bande des 3 milles et au-delà de 1 000 m de fond ; tailles minimales, par exemple merlu 20 cm, rouget 11 cm, sole 20 cm (règlement UE 1967/2006). Zones éoliennes : périmètres officiels des parcs et zones de projet (GéoLittoral, juin 2026) ; AO9 = extensions des parcs AO6 Narbonnaise 1 et Golfe de Fos 1. Ferry : route simplifiée et horaires fictifs, pour le jeu.</div>'];
   say(lines,()=>{twClose();const c=document.getElementById('criee');if(c)c.scrollIntoView({behavior:'smooth'});},{last:'Direction la criée →'});
   setTimeout(()=>{const nav=$('tw-nav');if(nav&&!$('tw-again')){const b=document.createElement('button');b.className='tw-btn alt';b.id='tw-again';b.textContent='Rejouer';b.onclick=()=>{b.remove();talk=null;$('tw-talk').hidden=true;start();};nav.insertBefore(b,$('tw-next'));showLine();}},30);}
 
@@ -552,8 +578,8 @@ function buildMap(){const m=mapRect();const oc=document.createElement('canvas');
   c.strokeStyle='#6E6250';c.lineWidth=1.2;c.beginPath();COAST.forEach((p,i)=>{const q=m2p(p[0],p[1]);i?c.lineTo(q[0],q[1]):c.moveTo(q[0],q[1]);});c.stroke();
   c.strokeStyle='rgba(255,255,255,.75)';c.setLineDash([4,3]);c.beginPath();EDGE.forEach((p,i)=>{const q=m2p(p[0],p[1]);i?c.lineTo(q[0],q[1]):c.moveTo(q[0],q[1]);});c.stroke();c.setLineDash([]);
   const fz=f=>fs(f);c.textAlign='left';
-  const eq=m2p(EOL.x,EOL.y),er=EOL.r*mapFit().s;c.fillStyle='rgba(255,77,61,.28)';c.beginPath();c.arc(eq[0],eq[1],er,0,TAU);c.fill();c.strokeStyle='#E0321F';c.setLineDash([3,2]);c.lineWidth=1.3;c.stroke();c.setLineDash([]);
-  c.fillStyle='#7A1E12';c.font=fz('700 8px Mukta,sans-serif');c.fillText('parc éolien',eq[0]+er+2,eq[1]-1);c.fillText('fermé à la pêche',eq[0]+er+2,eq[1]+8);
+  for(const e of EOLS){c.beginPath();e.poly.forEach((p,i)=>{const q=m2p(p[0],p[1]);i?c.lineTo(q[0],q[1]):c.moveTo(q[0],q[1]);});c.closePath();c.fillStyle='rgba(255,77,61,.30)';c.fill();c.strokeStyle='#E0321F';c.setLineDash([3,2]);c.lineWidth=1.2;c.stroke();c.setLineDash([]);}
+  c.textAlign='center';c.fillStyle='rgba(122,30,18,.85)';c.font=fz('700 6.5px Mukta,sans-serif');for(const e of EOLS){const t=e.k==='pg'||e.k==='pl'?'':e.k==='g1a'?'AO10':e.k==='g1b'||e.k==='g2'?'':e.k==='n1'||e.k==='f1'?'AO9':'AO10';if(!t)continue;let sx=0,sy=0;for(const p of e.poly){sx+=p[0];sy+=p[1];}let q=m2p(sx/e.poly.length,sy/e.poly.length);if(e.k==='g1a'){let tx=0,ty=0,n=0;for(const k of ['g1a','g1b','g2']){const z=EOLS.find(o=>o.k===k);for(const p of z.poly){tx+=p[0];ty+=p[1];n++;}}q=m2p(tx/n,ty/n);}c.fillText(t,q[0],q[1]+2);}c.textAlign='left';
   c.fillStyle='rgba(255,255,255,.9)';c.font=fz('700 8px Mukta,sans-serif');const aq=m2p(-4,-45.5);c.fillText('accores ≈ 200 m',aq[0],aq[1]);
   const dq=m2p(22,-46.5);c.fillStyle='#fff';c.fillText('> 1 000 m : chalut interdit',dq[0],dq[1]);
   const bq=m2p(-33,-10);c.fillStyle='#9C3B2C';c.fillText('bande des 3 milles',bq[0],bq[1]);c.fillText('chalut interdit',bq[0],bq[1]+9*FS);
@@ -582,15 +608,22 @@ function drawPlot(){const r=L().plot,m=mapRect(),tt=G.anim;panel(r,null);if(!map
   for(const c of G.croches){const q=m2p(c.x,c.y);ctx.fillStyle=c.hit?'#E0321F':'#FFB23A';ctx.beginPath();ctx.moveTo(q[0],q[1]-6);ctx.lineTo(q[0]+5.5,q[1]+4);ctx.lineTo(q[0]-5.5,q[1]+4);ctx.closePath();ctx.fill();ctx.fillStyle='#0A0A1F';ctx.font=fs('800 7px Mukta,sans-serif');ctx.textAlign='center';ctx.fillText('!',q[0],q[1]+3);}
   // traces
   ctx.lineCap='round';for(let i=1;i<G.track.length;i++){const a=G.track[i-1],b=G.track[i];const p=m2p(a[0],a[1]),q=m2p(b[0],b[1]);ctx.strokeStyle=b[2]?'#FF7A1A':'rgba(255,255,255,.85)';ctx.lineWidth=b[2]?3:1.5;ctx.beginPath();ctx.moveTo(p[0],p[1]);ctx.lineTo(q[0],q[1]);ctx.stroke();}
+  // route du ferry
+  ctx.strokeStyle='rgba(176,108,255,.8)';ctx.lineWidth=1.6;ctx.setLineDash([7,5]);ctx.beginPath();FR.forEach((p,i)=>{const q=m2p(p[0],p[1]);i?ctx.lineTo(q[0],q[1]):ctx.moveTo(q[0],q[1]);});ctx.stroke();ctx.setLineDash([]);
+  {const q=m2p(FR[0][0]+(FR[1][0]-FR[0][0])*.8,FR[0][1]+(FR[1][1]-FR[0][1])*.8);ctx.font=fs('800 8px Mukta,sans-serif');const lt='route ferry Sète ⇄ Maroc',lw=ctx.measureText(lt).width+8;ctx.fillStyle='rgba(58,20,110,.82)';rr(q[0]+6,q[1]-6,lw,12*FS,4);ctx.fill();ctx.fillStyle='#E9DCFF';ctx.textAlign='left';ctx.fillText(lt,q[0]+10,q[1]+3*FS);}
+  for(const f of G.ferries){if(!fOn(f,G.t))continue;const p=fXY(f,G.t),q=m2p(p[0],p[1]),n=fXY(f,G.t+30),nq=m2p(n[0],n[1]);ctx.strokeStyle='rgba(176,108,255,.95)';ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(q[0],q[1]);ctx.lineTo(nq[0],nq[1]);ctx.stroke();
+   if(f.warned){ctx.strokeStyle='rgba(255,77,61,'+(.5+.4*Math.sin(tt*6))+')';ctx.lineWidth=2;ctx.beginPath();ctx.arc(q[0],q[1],Math.max(10,.6*s),0,TAU);ctx.stroke();}
+   ctx.save();ctx.translate(q[0],q[1]);ctx.rotate(fHead(f,G.t));ctx.fillStyle='#F4F0FF';ctx.strokeStyle='#5B2BB0';ctx.lineWidth=1.6;ctx.beginPath();ctx.moveTo(0,-12);ctx.lineTo(4.5,-5);ctx.lineTo(4.5,10);ctx.lineTo(-4.5,10);ctx.lineTo(-4.5,-5);ctx.closePath();ctx.fill();ctx.stroke();ctx.restore();
+   ctx.font=fs('800 8px Mukta,sans-serif');ctx.fillStyle='#fff';ctx.textAlign='center';ctx.fillText('FERRY GNV',q[0],q[1]-15);}
   // autres bateaux
   for(const b of G.boats){if(b.st==='dock'||b.st==='home')continue;const q=m2p(b.x,b.y);ctx.save();ctx.translate(q[0],q[1]);ctx.rotate(b.h);ctx.fillStyle='#5A6576';ctx.beginPath();ctx.moveTo(0,-5);ctx.lineTo(3.5,4);ctx.lineTo(-3.5,4);ctx.closePath();ctx.fill();ctx.restore();}
   // destination
   const B=G.boat,bq=m2p(B.x,B.y);
   if(G.dest){const q=m2p(G.dest[0],G.dest[1]);ctx.strokeStyle='#E0321F';ctx.setLineDash([6,4]);ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(bq[0],bq[1]);ctx.lineTo(q[0],q[1]);ctx.stroke();ctx.setLineDash([]);ctx.beginPath();ctx.arc(q[0],q[1],6,0,TAU);ctx.stroke();ctx.beginPath();ctx.moveTo(q[0]-9,q[1]);ctx.lineTo(q[0]+9,q[1]);ctx.moveTo(q[0],q[1]-9);ctx.lineTo(q[0],q[1]+9);ctx.stroke();}
-  if(G.phase==='trawl'&&G.trawlTarget!=null){ctx.strokeStyle='rgba(255,122,26,.8)';ctx.setLineDash([3,3]);ctx.beginPath();ctx.moveTo(bq[0],bq[1]);ctx.lineTo(bq[0]+Math.sin(G.trawlTarget)*40,bq[1]-Math.cos(G.trawlTarget)*40);ctx.stroke();ctx.setLineDash([]);}
+  if(G.phase==='trawl'||((G.phase==='idle'||G.phase==='wait')&&G.traitN<3)){const rem=(G.phase==='trawl'?Math.max(0,TRAWL_MIN-G.tr.min):TRAWL_MIN)/60*TRAWL_KN,e=m2p(B.x+Math.sin(B.h)*rem,B.y+Math.cos(B.h)*rem);ctx.strokeStyle='rgba(255,122,26,.9)';ctx.setLineDash([4,4]);ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(bq[0],bq[1]);ctx.lineTo(e[0],e[1]);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#FF7A1A';ctx.beginPath();ctx.arc(e[0],e[1],3,0,TAU);ctx.fill();}
   ctx.save();ctx.translate(bq[0],bq[1]);ctx.rotate(B.h);ctx.fillStyle='#00FFFF';ctx.strokeStyle='#0A0A1F';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(0,-9);ctx.lineTo(6,7);ctx.lineTo(0,4);ctx.lineTo(-6,7);ctx.closePath();ctx.fill();ctx.stroke();ctx.restore();
   if(G.phase==='plan'&&!G.dest){ctx.fillStyle='rgba(10,10,31,.78)';const tw=portrait?330:250;rr(m[0]+m[2]/2-tw/2,m[1]+m[3]-40*FS,tw,26*FS,13*FS);ctx.fill();txt('Touche une zone pour tracer la route',m[0]+m[2]/2,m[1]+m[3]-22*FS,'800 12px Mukta,sans-serif','#00FFFF','center');}
-  compass(m,G.boat.h,(G.dest?[[brgA(G.dest[0],G.dest[1]),'#E0321F']]:[]));ctx.restore();
+  compass(m,G.boat.h,(G.dest?[[brgA(G.dest[0],G.dest[1]),'#E0321F']]:[]).concat(G.ferries.filter(f=>fOn(f,G.t)).map(f=>{const p=fXY(f,G.t);return[brgA(p[0],p[1]),'#B06CFF'];})));ctx.restore();
   drawInfo(r);}
 function drawInfo(r){const iw=portrait?236:196,x=r[0]+r[2]-iw-2,y=r[1]+6,w=iw-8;ctx.fillStyle='#0A0F1A';rr(x,y,w,r[3]-12,8);ctx.fill();
   const B=G.boat,dc=distCoast(B.x,B.y),d=depthAt(B.x,B.y,dc),lx=x+10,lh=portrait?25:17;let yy=y+(portrait?26:18);
@@ -603,7 +636,7 @@ function drawInfo(r){const iw=portrait?236:196,x=r[0]+r[2]-iw-2,y=r[1]+6,w=iw-8;
   else if(G.phase==='trawl'){L1('Trait',G.tr.n+' / 3');L1('Durée',fmtT(G.tr.min).replace(' h ','h')+' / 3h');L1('Dans le sac',nf(G.tr.kgTot)+' kg','#FFE9A8');}
   else yy+=lh*3;
   yy+=portrait?2:0;const eta=G.phase==='return'?G.t+Math.hypot(PORT[0]-B.x,PORT[1]-B.y)/Math.max(1,B.spd||THR[G.thr].kn)*60:projReturn();
-  txt('RETOUR CRIÉE ESTIMÉ',lx,yy,'800 9px Mukta,sans-serif','#7F93B8');yy+=portrait?24:17;txt(fmtT(eta),lx,yy,'800 17px Mukta,sans-serif',eta>T_CRIEE?'#FF6B5A':'#3BF0A0');txt(eta>T_CRIEE?'trop tard !':'avant 17 h',x+w-10,yy,'700 10px Mukta,sans-serif',eta>T_CRIEE?'#FF6B5A':'#3BF0A0','right');yy+=lh;
+  txt('RETOUR CRIÉE ESTIMÉ',lx,yy,'800 9px Mukta,sans-serif','#7F93B8');yy+=portrait?24:17;txt(fmtT(eta),lx,yy,'800 17px Mukta,sans-serif',eta>T_CRIEE?'#FF6B5A':'#3BF0A0');txt(eta>T_CRIEE?'trop tard !':'avant 17 h 30',x+w-10,yy,'700 10px Mukta,sans-serif',eta>T_CRIEE?'#FF6B5A':'#3BF0A0','right');yy+=lh;
   if(G.phase!=='return'&&G.phase!=='end'){const pf=projFuel();L1('Gasoil prévu','≈ '+nf(Math.round(pf/10)*10)+' L');}
   G.ui.home=null;if(G.traitN>=1&&G.phase!=='trawl'&&G.phase!=='return'&&G.phase!=='haul'&&G.phase!=='end'&&G.traitN<3){const bh=portrait?34:24,by=y+r[3]-12-bh-6;G.ui.home=[lx-4,by,w-12,bh];ctx.fillStyle='#1E2A44';rr(lx-4,by,w-12,bh,bh/2);ctx.fill();txt('⚓ Rentrer à la criée',lx-4+(w-12)/2,by+bh*.68,'800 11px Mukta,sans-serif','#FFE9A8','center');}miniCmp(x,y,w,r[3]-12,G.ui.home?G.ui.home[3]+8:0);}
 function drawSonar(){const r=L().son;panel(r,'SONDEUR');const x=r[0]+8,y=r[1]+(portrait?34:26),w=r[2]-16,h=r[3]-(portrait?42:34);ctx.fillStyle='#061A45';ctx.fillRect(x,y,w,h);
@@ -613,7 +646,7 @@ function drawSonar(){const r=L().son;panel(r,'SONDEUR');const x=r[0]+8,y=r[1]+(p
   const last=D[D.length-1];txt(last?Math.round(last.d)+' m':'—',x+w-6,y+16*FS,'800 13px Mukta,sans-serif','#fff','right');txt('0',x+4,y+11*FS,'700 9px Mukta,sans-serif','#7F93B8');txt(md+' m',x+4,y+h-4,'700 9px Mukta,sans-serif','#7F93B8');
   if(last&&(G.phase==='trawl'||G.phase==='transit'||G.phase==='idle'||G.phase==='wait')){const f=last.f;txt(f>.9?'Échos forts':f>.55?'Échos moyens':'Échos faibles',x+w-6,y+h-6,'800 10px Mukta,sans-serif',f>.9?'#FF4D3D':f>.55?'#FFD23F':'#3BF0A0','right');}}
 function drawGauges(){const r=L().gau;panel(r,null);const x=r[0]+12,y=r[1];const late=G.t>T_CRIEE;
-  txt(clk(G.t),x,y+(portrait?64:48),'800 38px "Courier New",monospace',late?'#FF6B5A':'#FFE9A8');txt('criée : 17:00',x,y+(portrait?92:68),'700 10px Mukta,sans-serif','#7F93B8');
+  txt(clk(G.t),x,y+(portrait?64:48),'800 38px "Courier New",monospace',late?'#FF6B5A':'#FFE9A8');txt('criée 17:00 · max 17:30',x,y+(portrait?92:68),'700 10px Mukta,sans-serif','#7F93B8');
   const rx=portrait?x+250:x+168,rw=r[0]+r[2]-12,lh=portrait?25:19;let yy=y+(portrait?30:22);
   const L1=(a,b,c)=>{txt(a,portrait?x:rx,yy,'700 10px Mukta,sans-serif','#7F93B8');txt(b,rw,yy,'800 12px Mukta,sans-serif',c||'#E7ECFF','right');yy+=lh;};
   if(portrait)yy=y+122;
@@ -627,20 +660,20 @@ function btn(rc,label,on,col,sel){ctx.fillStyle=sel?'#00FFFF':on?(col||'#1E2A44'
 function drawCtrl(){const r=L().ctrl;panel(r,null);const u=G.ui,pul=(Math.sin(G.anim*4)+1)/2,[lab,short,on]=actLabel();
   if(portrait){const y=r[1]+8,h=r[3]-16;u.thr=[0,1,2].map(i=>[r[0]+8+i*82,y,76,h]);u.act=[r[0]+256,y,250,h];u.left=[r[0]+512,y,52,h];u.right=[r[0]+568,y,52,h];u.warp=[r[0]+626,y,62,h];}
   else{u.thr=[0,1,2].map(i=>[r[0]+8+i*98,r[1]+8,92,38]);u.act=[r[0]+8,r[1]+54,290,60];u.left=[r[0]+8,r[1]+122,62,34];u.right=[r[0]+76,r[1]+122,62,34];u.warp=[r[0]+144,r[1]+122,154,34];}
-  if(G.phase==='trawl'){const a0=u.thr[0],a2=u.thr[2],bx=a0[0],bw=a2[0]+a2[2]-a0[0];ctx.fillStyle='#FF7A1A';ctx.shadowColor='#FF7A1A';ctx.shadowBlur=8+6*pul;rr(bx,a0[1],bw,a0[3],12);ctx.fill();ctx.shadowBlur=0;txt(portrait?'PÊCHE · 4,5 nds':'EN PÊCHE · CHALUT À '+String(TRAWL_KN).replace('.',',')+' nds',bx+bw/2,a0[1]+a0[3]/2+5,'800 '+(portrait?15:14)+'px Mukta,sans-serif','#0A0F1A','center');}else THR.forEach((T,i)=>{btn(u.thr[i],portrait?T.n:T.n+' '+String(T.kn).replace('.',',')+' nds',true,null,G.thr===i);});
+  if(G.phase==='trawl'){const a0=u.thr[0],a2=u.thr[2],bx=a0[0],bw=a2[0]+a2[2]-a0[0];ctx.fillStyle='#FF7A1A';ctx.shadowColor='#FF7A1A';ctx.shadowBlur=8+6*pul;rr(bx,a0[1],bw,a0[3],12);ctx.fill();ctx.shadowBlur=0;txt(portrait?'PÊCHE · 3 nds':'EN PÊCHE · CHALUT À '+String(TRAWL_KN).replace('.',',')+' nds',bx+bw/2,a0[1]+a0[3]/2+5,'800 '+(portrait?15:14)+'px Mukta,sans-serif','#0A0F1A','center');}else THR.forEach((T,i)=>{btn(u.thr[i],portrait?T.n:T.n+' '+String(T.kn).replace('.',',')+' nds',true,null,G.thr===i);});
   const a=u.act;ctx.fillStyle=on?'#FF4D3D':'#3A2A2A';ctx.shadowColor='#FF4D3D';ctx.shadowBlur=on?14+10*pul:0;rr(a[0],a[1],a[2],a[3],14);ctx.fill();ctx.shadowBlur=0;
   txt(portrait?short:lab,a[0]+a[2]/2,a[1]+a[3]/2+(portrait?6:6),'800 '+(portrait?16:18)+'px Mukta,sans-serif',on?'#fff':'#9A8A8A','center');
-  const tr=G.phase==='trawl';btn(u.left,'◀',tr,'#1E2A44',G.steer<0);btn(u.right,'▶',tr,'#1E2A44',G.steer>0);btn(u.warp,portrait?'×4':(G.warp>1?'⏩ Temps ×4':'⏩ Accélérer'),G.phase!=='plan',null,G.warp>1);}
+  const tr=G.phase==='trawl'||G.phase==='idle'||G.phase==='wait';btn(u.left,'◀',tr,'#1E2A44',G.steer<0);btn(u.right,'▶',tr,'#1E2A44',G.steer>0);btn(u.warp,portrait?'×4':(G.warp>1?'⏩ Temps ×4':'⏩ Accélérer'),G.phase!=='plan',null,G.warp>1);}
 function drawTip(){const r=L().tip;panel(r,null);const fsz=portrait?62:64,cx=r[0]+12+fsz/2,cy=r[1]+r[3]/2;
   ctx.save();ctx.beginPath();ctx.arc(cx,cy,fsz/2,0,TAU);ctx.clip();if(PIMG.complete)ctx.drawImage(PIMG,cx-fsz/2,cy-fsz/2,fsz,fsz);ctx.restore();ctx.strokeStyle='#00FFFF';ctx.lineWidth=3;ctx.beginPath();ctx.arc(cx,cy,fsz/2,0,TAU);ctx.stroke();
   const B=G.boat,ph=G.phase,eta=projReturn();let t;
   if(ph==='plan')t=G.dest?'Bonne route. Choisis l’allure : plein gaz arrive plus tôt mais consomme bien plus. Puis largue les amarres.':'Touche une zone sur le traceur. Regarde l’heure d’arrivée et le retour estimé.';
   else if(ph==='wait')t='On est sur zone avant 6 h : on patiente, moteur au ralenti.';
   else if(ph==='transit')t=G.t<T_FIRST?'On fait route de nuit. En éco on consomme moins, mais on arrive plus tard.':'Il est plus de 6 h : tu peux filer le chalut ici, ou continuer.';
-  else if(ph==='trawl')t=G.tr.min<60?'Le chalut travaille à 4,5 nœuds. Suis les échos du sondeur, évite les croches ⚠. ◀ ▶ pour barrer.':eta>T_CRIEE?'Oriente le trait vers Sète : tu gagneras du temps pour la criée.':'Beau travail. Tu peux virer quand tu veux, ou laisser finir les 3 heures.';
+  else if(ph==='trawl')t=G.tr.min<60?'Le chalut travaille à 3 nœuds, cap fixe. Suis les échos du sondeur, évite les croches ⚠ et la route du ferry.':eta>T_CRIEE?'Oriente le trait vers Sète : tu gagneras du temps pour la criée.':'Beau travail. Tu peux virer quand tu veux, ou laisser finir les 3 heures.';
   else if(ph==='haul')t='On vire : le cul du chalut remonte, et les mouettes arrivent !';
   else if(ph==='return')t=G.wind.k>.3?'La tramontane nous freine. Tiens bon, cap sur Sète.':'Cap sur Sète. Pendant la route, l’équipage trie et met en glace.';
-  else if(ph==='idle')t=G.traitN>=3?'Trois traits : rentre à la criée !':G.t<T_FIRST?'Attends 6 h pour filer le chalut.':'File le trait suivant ici, ou touche le traceur pour changer de coin.';
+  else if(ph==='idle')t=G.traitN>=3?'Trois traits : rentre à la criée !':G.t<T_FIRST?'Attends 6 h pour filer le chalut.':'Oriente le trait avec ◀ ▶ (pointillés orange), puis file le chalut. Ou touche le traceur pour changer de coin.';
   else t='';
   wrap(t,r[0]+fsz+26,r[1]+(portrait?30:24),r[2]-fsz-36,portrait?15:16,'600 13px Mulish,sans-serif','#E7ECFF');}
 function drawToast(){if(!G.msg)return;const W=L().win,a=Math.min(1,G.msg.life*2);ctx.save();ctx.globalAlpha=a;ctx.font=fs('800 16px Mukta,sans-serif');const tw=Math.min(W[2]-60,ctx.measureText(G.msg.t).width+40),th=34*FS;
@@ -662,15 +695,15 @@ cv.addEventListener('pointerdown',e=>{if(!G||talk)return;e.preventDefault();cons
   for(let i=0;i<3;i++)if(inR(p,u.thr&&u.thr[i])){G.thr=i;return;}
   if(inR(p,u.act)){act();return;}
   if(inR(p,u.warp)){if(G.phase!=='plan')G.warp=G.warp===1?4:1;return;}
-  if(G.phase==='trawl'&&inR(p,u.left)){G.steer=-1;return;}if(G.phase==='trawl'&&inR(p,u.right)){G.steer=1;return;}
+  if(inR(p,u.left)||inR(p,u.right)){const dir=inR(p,u.left)?-1:1;if(G.phase==='trawl'){noSteer();return;}if(G.phase==='idle'||G.phase==='wait'){G.steer=dir;return;}}
   if(inR(p,u.home)){goHome();return;}
   if(inR(p,mapRect())){plotClick(p2m(p[0],p[1]));return;}
-  const W=L().win;if(G.phase==='trawl'&&inR(p,W))G.steer=p[0]<W[0]+W[2]/2?-1:1;});
+  const W=L().win;if(G.phase==='trawl'&&inR(p,W))noSteer();});
 cv.addEventListener('pointermove',e=>{if(G&&G.scene==='quai')quaiMove(ptr(e));});
 window.addEventListener('pointerup',()=>{if(!G)return;G.steer=0;if(G.scene==='quai')quaiUp();});
 window.addEventListener('keydown',e=>{if(!running||!G)return;if(e.code==='Escape'){twClose();return;}if(talk)return;
   if(e.code==='Space'){e.preventDefault();if(G.scene==='sea')act();}
-  if(G.phase==='trawl'){if(e.code==='ArrowLeft'){G.steer=-1;e.preventDefault();}if(e.code==='ArrowRight'){G.steer=1;e.preventDefault();}}});
+  if(e.code==='ArrowLeft'||e.code==='ArrowRight'){e.preventDefault();if(G.phase==='trawl'){if(!e.repeat)noSteer();}else if(G.phase==='idle'||G.phase==='wait')G.steer=e.code==='ArrowLeft'?-1:1;}});
 window.addEventListener('keyup',e=>{if(G&&(e.code==='ArrowLeft'||e.code==='ArrowRight'))G.steer=0;});
 function start(){newGame();say(INTRO,null,{last:'Ranger les bacs →'});}
 window.twOpen=function(){modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.documentElement.style.overflow='hidden';running=true;resize();start();last=0;cancelAnimationFrame(raf);raf=requestAnimationFrame(loop);};
