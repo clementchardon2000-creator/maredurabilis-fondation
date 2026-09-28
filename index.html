@@ -2116,6 +2116,20 @@ a.d2-cta{text-decoration:none}
 .pb-hand{font:italic 700 32px/1.1 "Playfair Display",Georgia,serif;color:#1F3B57;margin:6px 0 14px}
 .pb-txt{font:italic 500 17px/1.6 "Playfair Display",Georgia,serif;color:#3A2E24;margin:0}
 .pb-sign{font:italic 700 18px "Playfair Display",Georgia,serif;color:#C4613A;margin:16px 0 0;text-align:right}
+.pb-msg{min-width:0}
+.pbt-k{font:italic 700 18px/1.25 "Playfair Display",Georgia,serif;color:#1F3B57;margin:18px 0 10px}
+.pbt-k b{color:#C4613A}
+.pbt{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:0 0 6px}
+.pbt button{all:unset;box-sizing:border-box;cursor:pointer;position:relative;padding:6px;background:radial-gradient(circle at 5px 5px,#0000 3.1px,#fff 3.6px) -5px -5px/10px 10px;filter:drop-shadow(0 3px 4px rgba(0,0,0,.2));transition:transform .25s}
+.pbt button:nth-child(1){transform:rotate(-4deg)}.pbt button:nth-child(2){transform:rotate(3deg)}.pbt button:nth-child(3){transform:rotate(-2deg)}.pbt button:nth-child(4){transform:rotate(4deg)}
+.pbt button:hover{transform:rotate(0) translateY(-4px) scale(1.06)}
+.pbt button:focus-visible{outline:3px solid #C4613A;outline-offset:2px}
+.pbt span{display:flex;flex-direction:column;justify-content:space-between;aspect-ratio:4/5;padding:7px 6px;color:#FBF6EC;background:var(--c);overflow:hidden}
+.pbt i{font:700 9px Mukta,sans-serif;font-style:normal;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+.pbt b{font:italic 900 17px/1 "Playfair Display",Georgia,serif}
+.pbt em{align-self:flex-end;font:800 10px Mukta,sans-serif;font-style:normal}
+@media(max-width:700px){.pbt{gap:8px}.pbt-k{font-size:16px}.pbt b{font-size:12.5px}.pbt span{padding:6px 4px}.pbt i{font-size:8px;letter-spacing:.08em}.pbt em{font-size:9px}}
+
 .pb-back{margin-top:auto;align-self:flex-start;background:none;border:0;font:700 12px Mukta,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#7A6A5A;cursor:pointer;padding:14px 0 0}
 .pb-to{position:relative;padding:22px 22px 18px 28px;display:flex;flex-direction:column;gap:2px}
 .pb-to .pc-stamp{position:absolute;right:18px;top:14px}
@@ -3074,7 +3088,7 @@ body.dw-lock{overflow:hidden}
     <div class="pb-msg"><p class="pb-hand">Bienvenue à bord&nbsp;!</p>
      <p class="pb-txt">Ici, on vous raconte la pêche de chez nous : d’où viennent nos gestes, comment on pêche aujourd’hui, qui pêche quoi, et ce qui arrive dans vos assiettes. Et pour vous mettre dans le bain, embarquez à bord de nos bateaux, en expériences virtuelles.</p>
      <p class="pb-sign">L’équipe de Mare Durabilis</p>
-     <button class="pb-back" onclick="return openCarte2()">↻ Revoir le recto</button></div>
+     <p class="pbt-k">P.-S. : <b>quatre jeux immersifs</b> vous attendent à bord. Choisissez votre timbre&nbsp;:</p><div class="pbt"><button type="button" onclick="sgOpen()" style="--c:#1F3B57" aria-label="Jouer : la senne, thon rouge, avec Janvier"><span><i>Janvier</i><b>Senne</b><em>JOUER →</em></span></button><button type="button" onclick="cnOpen()" style="--c:#C4613A" aria-label="Jouer : la canne, avec Vincent"><span><i>Vincent</i><b>Canne</b><em>JOUER →</em></span></button><button type="button" onclick="twOpen()" style="--c:#3F6E68" aria-label="Jouer : le chalut, avec Vincent"><span><i>Vincent</i><b>Chalut</b><em>JOUER →</em></span></button><button type="button" onclick="plOpen()" style="--c:#6B4A2E" aria-label="Jouer : la palangre, avec Janvier"><span><i>Janvier</i><b>Palangre</b><em>JOUER →</em></span></button></div><button class="pb-back" onclick="return openCarte2()">↻ Revoir le recto</button></div>
     <div class="pb-to"><div class="pc-stamp"><b>SÈTE</b><small>2026</small></div><div class="pb-k">Sept chapitres, dont un jeu</div><a href="#" onclick="return goPeche('.histo')"><span class="pb-n">01</span><b>L’histoire</b><i>Du garum au satellite</i></a><a href="#" onclick="return goPeche('.italie')"><span class="pb-n">02</span><b>Nos héritages</b><i>D’où viennent nos gestes</i></a><a href="#" onclick="return goPeche('.rais')"><span class="pb-n">03</span><b>Aujourd’hui</b><i>Une pêche encadrée, contrôlée</i></a><a href="#" onclick="return goPeche('.thon')"><span class="pb-n">04</span><b>Le thon rouge</b><i>De la crise au renouveau</i></a><a href="#" onclick="return goPeche('.fl')"><span class="pb-n">05</span><b>Qui pêche quoi</b><i>Cinq façons de pêcher, et nos jeux</i></a><a href="#" onclick="return goPeche('#criee')"><span class="pb-n">06</span><b>La criée</b><i>À vous de jouer</i></a><a href="#" onclick="return goPeche('.food')"><span class="pb-n">07</span><b>À table</b><i>Des poissons qui font envie</i></a></div>
    </div>
   </div>
