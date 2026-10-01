@@ -2108,6 +2108,9 @@ a.d2-cta{text-decoration:none}
 .pc3{position:relative;z-index:3;width:min(980px,92vw);perspective:2200px}
 .pc3-in{display:grid;transition:transform .9s cubic-bezier(.3,.7,.2,1);transform-style:preserve-3d;transform:rotate(-1.4deg)}
 .pc3.flipped .pc3-in{transform:rotateY(180deg) rotate(1deg)}
+.pc3.flipped .pc3-front,.pc3.flipped .pc3-front *{pointer-events:none}
+.pc3:not(.flipped) .pc3-back,.pc3:not(.flipped) .pc3-back *{pointer-events:none}
+.pc3.flipped .pc3-back{position:relative;z-index:2}
 .pc3-face{grid-area:1/1;display:grid;grid-template-columns:1fr 1fr;background:#FBF6EC;border-radius:6px;padding:14px;box-shadow:0 34px 80px rgba(0,0,0,.55);backface-visibility:hidden;-webkit-backface-visibility:hidden;color:#2B2118}
 .pc3-front .pc-ph{min-height:340px}
 #peche .pc3-front .pc-hand{font:italic 700 32px/1.18 "Playfair Display",Georgia,serif;color:#1F3B57;margin:118px 0 12px}
