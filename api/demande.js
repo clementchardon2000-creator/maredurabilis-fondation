@@ -58,7 +58,7 @@ module.exports = async (req, res) => {
     }
     if (total > MAX_BYTES) return res.status(413).json({ error: 'Pièces jointes trop lourdes (3 Mo au total maximum).' });
 
-    const sujet = (role === 'Porteur de projet' ? '📁 Demande de subvention' : '📩 Contact') + ' — ' + nom + (objet ? ' — ' + objet : '');
+    const sujet = (role.indexOf('Candidature') === 0 ? '📁 Candidature' : role === 'Idée de projet' ? '💡 Idée de projet' : role === 'Porteur de projet' ? '📁 Demande de subvention' : '📩 Contact') + ' — ' + nom + (objet ? ' — ' + objet : '');
     const corps = recap([
       ['Vous nous écrivez en tant que', esc(role)],
       ['Programme d’action de référence', esc(programme)],
