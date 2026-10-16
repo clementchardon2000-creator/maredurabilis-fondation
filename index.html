@@ -3699,6 +3699,13 @@ button.pd-c{cursor:pointer;transition:background .2s}button.pd-c:hover{backgroun
  .pd-steps,.pd-steps.n2,.pd-steps.n3,.pd-steps.n5{grid-template-columns:1fr;gap:18px}.pd-steps::before{left:23px;right:auto;top:24px;bottom:24px;width:2px;height:auto;background:linear-gradient(180deg,var(--turquoise),var(--iris),var(--klein))}
  .pd-steps>div{display:grid;grid-template-columns:48px 1fr;gap:16px;align-items:center;padding:0}.pd-steps p{margin:0}
 }
+
+.pd-cta-sub,.pc-cta>span small{display:block;margin-top:4px;font:700 9.5px Mukta,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:rgba(0,18,181,.6)}
+.pc-cta>span{display:flex;flex-direction:column;line-height:1}
+.pd-fin0{align-items:center}
+.pd-tbd{margin-top:8px;font:800 30px/1.1 Mukta,sans-serif;color:var(--klein)}
+.pd-fin0 .pd-fr p{margin:0;max-width:none;font:400 15px/1.6 Mulish,sans-serif;color:var(--muted)}
+.pd-fin0 .pd-fr .pd-ech{margin-top:8px;color:var(--ink)}.pd-fin0 .pd-ech b{color:var(--klein)}
 </style>
 </head>
 <body>
@@ -4800,7 +4807,7 @@ var PROJ_META = {
       solution:[], avantage:'', hideResume:true,
       resume:"Faire des futurs parcs éoliens flottants de Méditerranée de véritables espaces de régénération écologique et de coactivité maritime, en s’appuyant sur des structures écoconçues, bio-inspirées et bas carbone, capables de renforcer la biodiversité tout en favorisant le maintien et la pérennité des activités de pêche.",
       partenaires:[{n:'SATHOAN',r:'Porteur'},{n:'Ifremer'},{n:'CRPMEM Occitanie'},{n:'CEPRALMAR'},{n:'EOLMED'},{n:'BRL Ingénierie'},{n:'3D CONCRETE'}],
-      reperes:[{k:'Enveloppe Mare Durabilis',v:'800 000 €'},
+      reperes:[{k:'Enveloppe Mare Durabilis',v:'Montant en cours de définition'},
                {k:'Échéance',v:'T3 2027',n:'Création de la start-up'},
                {k:'Programme',v:'P2 · Restaurer les écosystèmes'}]},
   mc:{num:'P3', tag:'P3 · Prévenir et réduire les pollutions en milieu marin',
@@ -4821,9 +4828,10 @@ var PROJ_META = {
                {k:'Programme',v:'P4 · Moderniser la filière'}]},
   mn:{num:'P4', tag:'P4 · Moderniser la filière',
       titre:'Étude de conception d’un chalutier bas carbone',
-      resume:"Étude confiée à un architecte naval (70 000 €, 2026) pour concevoir une tête de série reproductible.",
-      partenaires:[{n:'MAURIC',r:'Prestataire · architecte naval'}],partTitle:'Parties prenantes du projet',
-      reperes:[{k:'Enveloppe Mare Durabilis',v:'70 000 €',n:'Étude de conception (2026)'},
+      resume:"Étude confiée à un architecte naval pour concevoir une tête de série reproductible.",
+      partenaires:[{n:'Mare Durabilis',r:'Porteur'},{n:'MAURIC',r:'Prestataire · architecte naval'}],partTitle:'Parties prenantes du projet',
+      ao:{url:'docs/AO_Etude_conception_chalutier.zip',name:'AO_Etude_conception_chalutier.zip'},
+      reperes:[{k:'Statut',v:'Recherche de prestataire'},{k:'Enveloppe Mare Durabilis',v:'Montant en cours de définition'},
                {k:'Échéance',v:'T4 2026',n:'Devis en cours de définition par le cabinet MAURIC'},
                {k:'Programme',v:'P4 · Moderniser la filière'}]},
 };
@@ -4846,7 +4854,7 @@ PROJ_META.ms = {num:'P1', tag:'P1 · Connaître et suivre les milieux marins',
   reperes:[{k:'Statut',v:'Plateforme en ligne',n:'Mise en relation pêcheurs / Mare Durabilis'},
            {k:'Programme',v:'P1 · Connaître et suivre les milieux marins'}]};
 
-PROJ_META.ep.reperes = [{k:'Enveloppe Mare Durabilis',v:'3 × 150 000 €',n:'Devis non signé — montant indicatif, susceptible d’évolution'},
+PROJ_META.ep.reperes = [{k:'Enveloppe Mare Durabilis',v:'Montant en cours de définition'},
                         {k:'Calendrier',v:'À partir du T1 2027',n:'Projet de long terme'},
                         {k:'Programme',v:'P1 · Connaître et suivre les milieux marins'}];
 PROJETS.ep = {};
@@ -4980,6 +4988,7 @@ function renderDetail(key){
   var ARW='<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   var DWN='<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19h14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   var cta=p.site?'<a class="pc-cta" href="'+p.site.url+'" target="_blank" rel="noopener"><span>'+p.site.label+'</span><i>'+ARW+'</i></a>'
+    :p.ao?'<a class="pc-cta" href="'+p.ao.url+'" download="'+p.ao.name+'"><span>Notre appel d’offres<small>Télécharger · ZIP</small></span><i>'+DWN+'</i></a>'
     :p.noAO?'<button type="button" class="pc-cta" onclick="openDon(\''+key+'\')"><span>Faire un don</span><i>'+ARW+'</i></button>'
     :'<span class="pc-cta pd-ao" title="En cours de rédaction"><span>Appel d’offres<small>En cours de rédaction</small></span><i><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></i></span>';
   // carte d'identité
@@ -4995,6 +5004,7 @@ function renderDetail(key){
   var E=function(n){return Math.round(n).toLocaleString('fr-FR')+' €';};
   var fin='';
   if(env){var t=env.v.replace(/[\s  €]/g,''),mm=t.match(/^(\d+)×(\d+)$/),cost=mm?(+mm[1])*(+mm[2]):parseInt(t,10);
+   if(!(cost>0))fin='<div class="pd-fin pd-fin0"><div class="pd-fl"><small>Montant total recherché</small><div class="pd-tbd">En cours de définition</div></div><div class="pd-fr"><p>Le montant sera connu à l’issue de l’appel d’offres'+(p.ao?'':', en cours de rédaction')+'.</p>'+(ech?'<p class="pd-ech"><b>'+ech.k+' :</b> '+ech.v+(ech.n?' — '+ech.n:'')+'</p>':'')+'</div></div>';
    if(cost>0){var per=cost*.2,str=cost*.04,tot=cost+per+str,got=p.collecte||0,pct=Math.min(100,Math.round(got/tot*100));
     var seg=[['Coût du projet',/×/.test(env.v)?env.v:'',cost,'#0012B5'],['Frais de personnel','20 %',per,'#00B5B5'],['Frais de structure','4 %',str,'#00E5F0']];
     fin='<div class="pd-fin"><div class="pd-fl"><small>Montant total recherché</small><div class="pd-tot">'+E(tot)+'</div>'+
