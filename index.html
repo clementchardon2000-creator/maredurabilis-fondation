@@ -3644,6 +3644,16 @@ button.pd-c{cursor:pointer;transition:background .2s}button.pd-c:hover{backgroun
 .pd-ao:hover{transform:none!important}.pd-ao:hover i{transform:none!important}
 .pd-ao>span{display:flex;flex-direction:column;gap:4px;line-height:1}
 .pd-ao small{font:700 9.5px Mukta,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:rgba(0,18,181,.6)}
+
+/* fiche projet : photo aux proportions d'origine, fondu vers la gauche (comme les bandeaux) */
+.pd-hero{background:#0012B5!important;overflow:hidden}
+.pd-hero::before{display:none}
+.pd-ph{position:absolute;top:0;right:0;bottom:0;height:100%;width:auto;max-width:100%;background-size:cover;background-position:center;background-repeat:no-repeat;
+ -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.35) 14%,rgba(0,0,0,.8) 28%,#000 40%);mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.35) 14%,rgba(0,0,0,.8) 28%,#000 40%)}
+.pd-hin{z-index:2}
+@media(max-width:900px){.pd-ph{left:0;width:100%;aspect-ratio:auto!important;opacity:.5;-webkit-mask-image:linear-gradient(180deg,#000 0%,#000 35%,transparent 85%);mask-image:linear-gradient(180deg,#000 0%,#000 35%,transparent 85%)}}
+/* bandeau « Nos projets » : mer prolongée vers la gauche, même échelle */
+#projets .pj-hero .aap-img{aspect-ratio:3180/1200!important;-webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.4) 9%,rgba(0,0,0,.85) 18%,#000 26%)!important;mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.4) 9%,rgba(0,0,0,.85) 18%,#000 26%)!important}
 </style>
 </head>
 <body>
@@ -3736,7 +3746,7 @@ button.pd-c{cursor:pointer;transition:background .2s}button.pd-c:hover{backgroun
   
 </section><section class="view" id="projets">
   <div id="projets-liste">
-    <div class="aap-hero pj-hero"><div class="aap-split"><div class="aap-panel"><div class="aap-kicker"><span class="k-rule"></span>Mare Durabilis · Programme directeur</div><h1>Nos <em>projets</em></h1><div class="aap-sub">Les projets du programme directeur, conduits par Mare Durabilis ou soutenus par le fonds. Cliquez sur un projet pour en savoir plus et contribuer &agrave; son financement.</div></div><div class="aap-photo"><div class="aap-img" role="img" aria-label="Bateau de pêche et plongeur, vue aérienne" style="background-image:url(img/pg_p1_bateau_plongeur.webp)"></div><div class="aap-fuse"></div><div class="aap-grain"></div></div></div></div>
+    <div class="aap-hero pj-hero"><div class="aap-split"><div class="aap-panel"><div class="aap-kicker"><span class="k-rule"></span>Mare Durabilis · Programme directeur</div><h1>Nos <em>projets</em></h1><div class="aap-sub">Les projets du programme directeur, conduits par Mare Durabilis ou soutenus par le fonds. Cliquez sur un projet pour en savoir plus et contribuer &agrave; son financement.</div></div><div class="aap-photo"><div class="aap-img" role="img" aria-label="Bateau de pêche et plongeur, vue aérienne" style="background-image:url(img/pg_projets_mer.webp)"></div><div class="aap-fuse"></div><div class="aap-grain"></div></div></div></div>
     <div class="pad"><div class="wide"><div class="pj-filters"><button type="button" class="pj-f on" onclick="filterProj('',this)">Tous les projets</button><button type="button" class="pj-f" onclick="filterProj('P1',this)"><b>P1</b> Connaître et suivre</button><button type="button" class="pj-f" onclick="filterProj('P2',this)"><b>P2</b> Restaurer</button><button type="button" class="pj-f" onclick="filterProj('P3',this)"><b>P3</b> Pollutions</button><button type="button" class="pj-f" onclick="filterProj('P4',this)"><b>P4</b> Moderniser</button></div><div class="projets-grid" id="projets-grid"></div><p class="projets-note">Montants prévisionnels au titre du fonds sur la période 2026-2029, sous réserve de validation par le conseil d’administration. Illustrations de la palangre connectée et de FishWind : vues d’artiste.</p></div></div>
   </div>
   <div class="proj-detail" id="detail-ms"></div>
@@ -4705,6 +4715,7 @@ var PHOTO_STYLES = {
   mn: 'background-size:cover;background-position:center 55%',
   fw: 'background-size:cover;background-position:center 50%'
 };
+var PHOTO_RATIO = {ms:'1920/987',ep:'1080/720',fw:'1600/1097',mc:'1800/1350',oh:'1800/1350',mn:'900/654'};
 var PHOTOS = {
   ms: 'img/ms_vitrine.webp',
   ep: 'img/c9afa658ed.jpg',
@@ -4718,7 +4729,7 @@ var PROJETS = {
   oh:{num:'01',tag:'S&eacute;lectivit&eacute; &middot; Palangre',titre:'Palangre intelligente',resume:"Capteur intelligent sur palangre&nbsp;: reconnaissance automatique des esp&egrave;ces, lib&eacute;ration des captures non d&eacute;sir&eacute;es, information en temps r&eacute;el sans cam&eacute;ra.",goal:1700000,statClass:['','',''],fillClass:'jf-k',stats:[{n:'2027',l:'D&eacute;marrage pr&eacute;vu'},{n:'5 ans',l:'Dur&eacute;e'},{n:'+5&nbsp;000',l:'Navires concern&eacute;s'}],desc:"Les captures accessoires repr&eacute;sentent un enjeu majeur pour les palangriers m&eacute;diterran&eacute;ens ciblant les thonid&eacute;s. Raies, requins et esp&egrave;ces non cibl&eacute;es se retrouvent accroch&eacute;s sans solution efficace.",solution:["Reconnaissance automatique des esp&egrave;ces par capteur (sans cam&eacute;ra)","Lib&eacute;ration automatique des captures non d&eacute;sir&eacute;es","Information en temps r&eacute;el&nbsp;: thons accroch&eacute;s avant remont&eacute;e de la ligne","Dispositif robuste, simple &agrave; utiliser en conditions r&eacute;elles de mer"],avantage:"Un int&eacute;r&ecirc;t pour les p&ecirc;cheurs&nbsp;: moins de remont&eacute;es &agrave; vide, moins de captures accidentelles",partenaires:[{n:'CNRS &middot; Porteur',c:''},{n:'Ifremer',c:'b'},{n:'Mare Durabilis',c:'b'},{n:'WWF (en discussion)',c:'i'}]},
   mc:{num:'02',tag:'D&eacute;pollution &middot; P&ecirc;cheurs prestataires',titre:'Mare Collect',resume:"R&eacute;mun&eacute;rer les p&ecirc;cheurs &agrave; la d&eacute;barque pour les d&eacute;chets plastiques remont&eacute;s dans leurs filets.",goal:300000,statClass:['iris','iris','iris'],fillClass:'jf-i',stats:[{n:'01',l:'Une action du programme Prévenir et réduire les pollutions en milieu marin'},{n:'02',l:'Un travail reconnu et r&eacute;mun&eacute;r&eacute;'},{n:'03',l:'Pilote &agrave; la cri&eacute;e du Grau d&rsquo;Agde'}],desc:"Mare Collect s&rsquo;inscrit dans le programme Prévenir et réduire les pollutions en milieu marin. Lorsqu&rsquo;un chalut remonte du plastique enfoui sur les fonds, le trier et le conserver &agrave; bord pour le rapporter &agrave; quai prend du temps &mdash; un temps compt&eacute;, dans un m&eacute;tier o&ugrave; chaque geste l&rsquo;est. Nous voulons reconna&icirc;tre ce travail de d&eacute;pollution et le r&eacute;mun&eacute;rer. Les p&ecirc;cheurs deviennent ici des prestataires qui nettoient les fonds marins&nbsp;; la r&eacute;mun&eacute;ration valorise leur r&ocirc;le et apporte un appui bienvenu &agrave; une fili&egrave;re confront&eacute;e &agrave; de fortes difficult&eacute;s &eacute;conomiques.",solution:["Mare Durabilis conduit et finance l&rsquo;action, par l&rsquo;interm&eacute;diaire de la cri&eacute;e o&ugrave; le plastique est d&eacute;barqu&eacute;","Les p&ecirc;cheurs sont r&eacute;mun&eacute;r&eacute;s &agrave; la d&eacute;barque pour le plastique rapport&eacute;","Pilote &agrave; la cri&eacute;e du Grau d&rsquo;Agde, seule cri&eacute;e o&ugrave; le tri s&eacute;lectif est fait sur place","Des donn&eacute;es fiables et ind&eacute;pendantes, sans reposer sur un dispositif ext&eacute;rieur"],avantage:"<span class='obj-highlight'>Objectif du pilote&nbsp;: v&eacute;rifier que la r&eacute;mun&eacute;ration augmente les volumes de plastique rapport&eacute;s &agrave; quai.</span> Nous d&eacute;marrons au Grau d&rsquo;Agde parce que c&rsquo;est la seule cri&eacute;e o&ugrave; le tri s&eacute;lectif est effectu&eacute; sur place&nbsp;: les donn&eacute;es y sont fiables et ind&eacute;pendantes de tout dispositif ext&eacute;rieur. Si le r&eacute;sultat se confirme, le mod&egrave;le pourra &ecirc;tre &eacute;tendu &agrave; d&rsquo;autres cri&eacute;es de la fa&ccedil;ade.",budget:{intro:"Le pilote se d&eacute;roule au Grau d&rsquo;Agde, un port volontairement modeste&nbsp;: 7 chalutiers y d&eacute;barquent environ 700&nbsp;tonnes de poisson par an, l&rsquo;ordre de grandeur d&rsquo;une p&ecirc;che tr&egrave;s artisanale. C&rsquo;est l&rsquo;&eacute;chelle id&eacute;ale pour un premier test ma&icirc;tris&eacute;.",lignes:[{k:'7 chalutiers',v:'pour environ 700&nbsp;t de poisson d&eacute;barqu&eacute;es par an'},{k:'20&nbsp;000&nbsp;&euro; par an',v:'enveloppe pr&eacute;vue pour le pilote&nbsp;: assez pour rendre la prime incitative, sans faire exploser le budget'},{k:'R&eacute;partition',v:'entre les navires, selon les jours de mer ou le volume de poisson d&eacute;barqu&eacute; &mdash; &agrave; d&eacute;finir avec le directeur de la cri&eacute;e'}]},partenaires:[{n:'Mare Durabilis &middot; Porteur unique',c:''},{n:'Cri&eacute;e du Grau d&rsquo;Agde',c:'b'}]},
   fw:{num:'03',tag:'&Eacute;olien &middot; Biodiversit&eacute; &middot; Recherche',titre:'FishWind',resume:"Co-activit&eacute; p&ecirc;che&nbsp;/&nbsp;&eacute;olien et modules &eacute;co-con&ccedil;us pour restaurer les &eacute;cosyst&egrave;mes au sein des parcs offshore.",goal:5000000,statClass:['bondi','bondi','bondi'],fillClass:'jf-b',stats:[{n:'3',l:'Grands enjeux'},{n:'2030',l:'Objectif cl&eacute;'},{n:'-10&nbsp;%',l:'Conflits d&rsquo;usage vis&eacute;s'}],desc:"Face aux d&eacute;fis du r&eacute;chauffement climatique et de la mont&eacute;e en puissance des &eacute;nergies renouvelables, FishWind r&eacute;pond &agrave; trois enjeux&nbsp;: pr&eacute;server la biodiversit&eacute; marine, soutenir une p&ecirc;che durable, et r&eacute;duire l&rsquo;impact environnemental des &eacute;oliennes offshore.",solution:["Tests de co-activit&eacute; p&ecirc;che au sein des parcs &eacute;oliens","Design de modules &eacute;cologiques &eacute;co-con&ccedil;us","Surveillance environnementale (ADNe, IA)","D&eacute;veloppement du mod&egrave;le &eacute;conomique et cr&eacute;ation de la structure commerciale"],avantage:"R&eacute;duction des conflits d&rsquo;usage p&ecirc;che&nbsp;/&nbsp;&eacute;olien. Augmentation des habitats prot&eacute;g&eacute;s. Mod&egrave;les exportables pour d&rsquo;autres r&eacute;gions maritimes.",partenaires:[{n:'SATHOAN &middot; Porteur',c:''},{n:'Ifremer',c:'b'},{n:'CRPMEM Occitanie',c:'b'},{n:'CEPRALMAR',c:'b'},{n:'EOLMED',c:'b'},{n:'BRL Ing&eacute;nierie',c:'i'},{n:'3D CONCRETE',c:'i'}]},
-  mn:{num:'04',tag:'Innovation &middot; D&eacute;carbonation',titre:'&Eacute;tude de conception pour un chalutier',resume:"Concevoir le cahier des charges du chalutier m&eacute;diterran&eacute;en de demain&nbsp;: hybride diesel-&eacute;lectrique, bas carbone, adapt&eacute; au plan WESTMED.",goal:50000,statClass:['','',''],fillClass:'jf-k',stats:[{n:'15-20m',l:'Taille cible'},{n:'-40&nbsp;%',l:'&Eacute;missions vis&eacute;es'},{n:'50&nbsp;k&euro;',l:'Enveloppe &eacute;tude'}],desc:"Le plan WESTMED impose une r&eacute;duction progressive de l&rsquo;effort de p&ecirc;che. Les armateurs font face &agrave; une &eacute;quation impossible avec des navires con&ccedil;us pour un autre contexte r&eacute;glementaire.",solution:["Cahier des charges pour un chalutier hybride 15-20&nbsp;m","Construction du navire","Mise en place d&rsquo;un nouveau mod&egrave;le d&rsquo;exploitation"],avantage:"Un cahier des charges structur&eacute; permet d&rsquo;engager un architecte naval et de constituer le dossier de financement.",partenaires:[{n:'Mare Durabilis &middot; Porteur',c:''},{n:'CMA CGM Fonds de dotation',c:'b'}]},};
+  mn:{num:'04',tag:'Innovation &middot; D&eacute;carbonation',titre:'&Eacute;tude de conception pour un chalutier',resume:"Concevoir le cahier des charges du chalutier m&eacute;diterran&eacute;en de demain&nbsp;: hybride diesel-&eacute;lectrique, bas carbone, adapt&eacute; au plan WESTMED.",goal:50000,statClass:['','',''],fillClass:'jf-k',stats:[{n:'15-20m',l:'Taille cible'},{n:'-40&nbsp;%',l:'&Eacute;missions vis&eacute;es'},{n:'50&nbsp;k&euro;',l:'Enveloppe &eacute;tude'}],desc:"Le plan WESTMED impose une r&eacute;duction progressive de l&rsquo;effort de p&ecirc;che. Les armateurs font face &agrave; une &eacute;quation impossible avec des navires con&ccedil;us pour un autre contexte r&eacute;glementaire.",solution:["Cahier des charges pour un chalutier hybride 15-20&nbsp;m","Mise en place d&rsquo;un nouveau mod&egrave;le d&rsquo;exploitation"],avantage:"Un cahier des charges structur&eacute; permet d&rsquo;engager un architecte naval et de constituer le dossier de financement.",partenaires:[{n:'Mare Durabilis &middot; Porteur',c:''}]},};
 
 var LOGOS = {
   'SATHOAN': 'img/eefb0a9610.jpg',
@@ -4727,7 +4738,7 @@ var LOGOS = {
 };
 var PROJ_ORDER = ['ep','ms','fw','mc','oh','mn'];
 var PROJ_COURT = {ms:'Mare Services', ep:'cette étude', fw:'FishWind', mc:'Mare Collect', oh:'la palangre connectée',
-                  mn:'le chalutier bas carbone',};
+                  mn:'l’étude de conception',};
 var PROJETS_EP = {
   num:'P1', tag:'P1 · Connaître et suivre les milieux marins',
   titre:'Étude de l’impact des pollutions chimiques sur les écosystèmes marins, lagunaires et côtiers',
@@ -4751,7 +4762,8 @@ var PROJ_META = {
       titre:'Mare Collect',
       resume:"Rémunération de la flotte pour le tri du plastique à bord et son traçage via une application, de la collecte en mer jusqu’au recyclage.",
       partenaires:[{n:'Mare Durabilis',r:'Porteur'},{n:'Criée du Grau d’Agde'}],
-      reperes:[{k:'Enveloppe Mare Durabilis',v:'4 × 43 000 €',n:'Soit un versement de 1 000 € pour chaque chalutier'},
+      noAO:true,
+      reperes:[{k:'Statut',v:'Recherche de financement'},{k:'Enveloppe Mare Durabilis',v:'4 × 43 000 €',n:'Soit un versement de 1 000 € pour chaque chalutier'},
                {k:'Échéance',v:'T4 2026'},
                {k:'Programme',v:'P3 · Prévenir et réduire les pollutions'}]},
   oh:{num:'P4', tag:'P4 · Moderniser la filière',
@@ -4762,10 +4774,10 @@ var PROJ_META = {
                {k:'Échéance',v:'T1 2027'},
                {k:'Programme',v:'P4 · Moderniser la filière'}]},
   mn:{num:'P4', tag:'P4 · Moderniser la filière',
-      titre:'Conception et construction d’un chalutier bas carbone',
-      resume:"Étude confiée à un architecte naval (70 000 €, 2026) pour concevoir une tête de série reproductible ; construction du démonstrateur en 2028 (2 000 000 €).",
-      partenaires:[{n:'Mare Durabilis',r:'Porteur'},{n:'CMA CGM Fonds de dotation'},{n:'MAURIC',r:'Architecte naval'}],
-      reperes:[{k:'Enveloppe Mare Durabilis',v:'2 070 000 €',n:'70 000 € d’étude en 2026, 2 000 000 € pour le démonstrateur en 2028'},
+      titre:'Étude de conception d’un chalutier bas carbone',
+      resume:"Étude confiée à un architecte naval (70 000 €, 2026) pour concevoir une tête de série reproductible.",
+      partenaires:[{n:'MAURIC',r:'Prestataire · architecte naval'}],partTitle:'Parties prenantes du projet',
+      reperes:[{k:'Enveloppe Mare Durabilis',v:'70 000 €',n:'Étude de conception (2026)'},
                {k:'Échéance',v:'T4 2026',n:'Devis en cours de définition par le cabinet MAURIC'},
                {k:'Programme',v:'P4 · Moderniser la filière'}]},
 };
@@ -4922,6 +4934,7 @@ function renderDetail(key){
   var ARW='<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   var DWN='<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19h14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   var cta=p.site?'<a class="pc-cta" href="'+p.site.url+'" target="_blank" rel="noopener"><span>'+p.site.label+'</span><i>'+ARW+'</i></a>'
+    :p.noAO?'<button type="button" class="pc-cta" onclick="openDon(\''+key+'\')"><span>Faire un don</span><i>'+ARW+'</i></button>'
     :'<span class="pc-cta pd-ao" title="En cours de rédaction"><span>Appel d’offres<small>En cours de rédaction</small></span><i><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></i></span>';
   // carte d'identité
   var st=null;rep.forEach(function(r){if(r.k==='Statut')st=r;});
@@ -4953,10 +4966,10 @@ function renderDetail(key){
   if(p.projet)g+='<div class="pd-card pd-c3"><div>'+K('Le projet')+'</div>'+T(p.projet)+'</div>';
   if(sol)g+='<div class="pd-card pd-c12">'+K(p.solTitle||'Nos actions')+sol+'</div>';
   if(p.avantage&&p.ambition)g+='<div class="pd-card pd-c3"><div>'+K('Impact attendu')+'</div>'+T(p.avantage)+'</div>';
-  if(logos)g+='<div class="pd-card pd-c12">'+K('Partenaires du projet')+'<div class="pf-logos">'+logos+'</div></div>';
+  if(logos)g+='<div class="pd-card pd-c12">'+K(p.partTitle||'Partenaires du projet')+'<div class="pf-logos">'+logos+'</div></div>';
   g+='<div class="pd-don"><div><b>Soutenir '+(p.court||p.titre)+'</b><span>Votre don finance directement ce projet au bénéfice de la pêche méditerranéenne.</span></div><button type="button" class="pd-dbtn" onclick="openDon(\''+key+'\')">Faire un don →</button></div>';
   det.innerHTML='<div class="pd">'+
-   '<div class="pd-hero" style="background-image:url(\''+photo+'\');'+ps+'">'+
+   '<div class="pd-hero"><div class="pd-ph" style="background-image:url(\''+photo+'\');aspect-ratio:'+(PHOTO_RATIO[key]||'3/2')+'"></div>'+
     '<div class="pd-hin wide">'+
      '<button class="pf-back" onclick="goListe()">← Tous les projets</button>'+
      (mode?'<div class="pd-tag">Projet opéré par Mare Durabilis</div>':'')+
