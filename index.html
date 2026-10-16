@@ -3265,6 +3265,54 @@ body.dw-lock{overflow:hidden}
 .fdm-sea{background:linear-gradient(180deg,rgba(242,248,254,.5) 0%,rgba(236,245,253,.3) 100%),url('img/fdm_mer.webp') center 40%/cover no-repeat}
 .fdm-sea .fdm-i{background:rgba(255,255,255,.88);border-radius:6px;padding:20px 22px 12px;border-top:2px solid var(--iris);box-shadow:0 10px 26px rgba(0,40,110,.08)}
 .fdm-sea .eyebrow{color:var(--klein)}
+
+/* ===== Nos fondamentaux : sombre, fluide (oct. 2026) ===== */
+.fdx{position:relative;overflow:hidden;padding:84px 0 92px;color:#fff;
+ background:radial-gradient(60% 80% at 85% 10%,rgba(0,181,181,.22),rgba(0,181,181,0) 70%),
+  radial-gradient(50% 70% at 10% 100%,rgba(0,116,181,.35),rgba(0,116,181,0) 70%),
+  linear-gradient(160deg,rgba(2,10,62,.93) 0%,rgba(3,18,92,.88) 55%,rgba(2,28,96,.9) 100%),
+  url('img/fdm_mer.webp') center 40%/cover no-repeat}
+.fdx>.wide{position:relative;z-index:1}
+.fdx .eyebrow{color:var(--turquoise)!important}
+.fdx-waves{position:absolute;inset:0;pointer-events:none;opacity:.9}
+.fdx-waves svg{width:100%;height:100%}
+.fdx-waves path{fill:none;stroke:url(#fdxg);stroke-width:1.6;vector-effect:non-scaling-stroke}
+.fdx-waves g{animation:fdxFlow 22s linear infinite}
+.fdx-waves .fdx-w2{animation-duration:30s;opacity:.55}
+.fdx-waves .fdx-w3{animation-duration:38s;opacity:.35;animation-direction:reverse}
+@keyframes fdxFlow{from{transform:translateX(0)}to{transform:translateX(-600px)}}
+@media(prefers-reduced-motion:reduce){.fdx-waves g{animation:none}}
+.fdx .fdm{gap:0 56px;margin-top:34px}
+.fdx .fdm-i,.fdx .fdm-i.reveal{position:relative;background:none!important;border:0!important;box-shadow:none!important;border-radius:0!important;padding:0 0 8px!important}
+.fdx .fdm-n{position:relative;display:inline-block;font:800 92px/.9 Mukta,sans-serif;letter-spacing:-.02em;color:transparent;
+ -webkit-text-stroke:1.5px rgba(0,255,255,.75);text-shadow:0 0 34px rgba(0,255,255,.18);transition:color .4s,-webkit-text-stroke-color .4s}
+.fdx .fdm-n::after{content:"";position:absolute;left:4px;bottom:-16px;width:9px;height:9px;border-radius:50%;background:var(--turquoise);
+ box-shadow:0 0 0 5px rgba(0,255,255,.14),0 0 18px rgba(0,255,255,.8)}
+.fdx .fdm-i h3{margin:34px 0 14px;font:700 21px/1.3 Mukta,sans-serif;color:#fff}
+.fdx .fdm-i p{margin:0 0 12px;font:400 15.5px/1.7 Mulish,sans-serif;color:rgba(214,226,255,.88)}
+.fdx .fdm-i:hover .fdm-n{color:rgba(0,255,255,.12);-webkit-text-stroke-color:var(--turquoise)}
+.fdx .fdm-i::before{content:"";position:absolute;left:4px;right:-28px;top:110px;height:1px;
+ background:linear-gradient(90deg,rgba(0,255,255,.55),rgba(0,255,255,0))}
+@media(max-width:900px){.fdx{padding:56px 0 60px}.fdx .fdm{gap:40px}.fdx .fdm-n{font-size:68px}.fdx .fdm-i::before{top:84px;right:0}}
+
+/* ===== Le manifeste : fond clair ===== */
+.manifeste{background:radial-gradient(45% 60% at 92% 0%,rgba(0,181,181,.10),rgba(0,181,181,0) 70%),#fff!important;color:var(--ink)!important}
+.manifeste::after{background:radial-gradient(circle,rgba(0,116,181,.08),rgba(0,116,181,0) 68%)!important}
+.manifeste .eyebrow-light{color:var(--iris)!important}
+.man-lead{color:var(--klein)!important}
+.man-lead em,.man-q{color:var(--iris)!important}
+.man-eco{border-left:0!important;border-top:2px solid var(--iris);padding:14px 0 0!important}
+.man-eco-k{color:var(--iris)!important}
+.man-eco p{color:#3A4766!important}
+.man-grid{border-top-color:var(--hairline)!important}
+.man-item{border-bottom-color:var(--hairline)!important;border-right-color:var(--hairline)!important}
+.man-n{color:var(--iris)!important}
+.man-item h3{color:var(--klein)!important}
+.man-item li{color:#33405E!important}
+.man-item li::before{background:var(--iris)!important}
+.man-cta h3{color:var(--klein)!important}
+.manifeste .btn-ghost{color:var(--klein)!important;border-color:var(--klein)!important;background:transparent}
+.manifeste .btn-ghost:hover{background:rgba(0,18,181,.06)!important}
 </style>
 </head>
 <body>
@@ -3293,7 +3341,7 @@ body.dw-lock{overflow:hidden}
   <p class="ftext fquote">Mare Durabilis est ainsi né de cette volonté commune : contribuer à inventer un modèle méditerranéen conciliant avenir économique des filières maritimes, gestion durable des ressources et régénération des écosystèmes de notre <i>Mare Nostrum</i>.</p></div>
  <div class="fimg reveal" style="background-image:url(img/746f81d39d.webp)"></div></div></div></div>
 
-<div class="pad-d fdm-sea" id="f-fondamentaux"><div class="wide"><div class="eyebrow">Nos fondamentaux</div><div class="fdm"><div class="fdm-i reveal"><div class="fdm-n">01</div><h3>Un outil de développement de nouvelles activités pour la pêche en Méditerranée.</h3><p>« Mare Durabilis » est un écosystème d’acteurs, de moyens et d’outils au service de la pêche en Méditerranée. Il couvre (à terme), en termes de structures juridiques, la totalité des moyens d’action et de financement nécessaires à l’organisation d’une pêche méditerranéenne rémunératrice, régénératrice et adaptative.</p></div><div class="fdm-i reveal"><div class="fdm-n">02</div><h3>Une redéfinition du métier et du rôle du pêcheur.</h3><p>Face aux évolutions du climat et des écosystèmes méditerranéens, confier aux pêcheurs des missions diversifiées permet de préserver durablement les revenus tout en allégeant la pression sur les populations marines, et en renforçant leur contribution à la connaissance et à la régénération des milieux.</p></div><div class="fdm-i reveal"><div class="fdm-n">03</div><h3>Une gestion de la Méditerranée par et pour les pêcheurs.</h3><p>Les pêcheurs sont, dans leur propre intérêt et dans celui des générations futures, les aménageurs et protecteurs naturels des milieux.</p><p>À travers des missions d’observation, de suivi, de restauration et de protection des écosystèmes, ils valorisent leurs compétences et leur connaissance du terrain dans le cadre de prestations de production ou de services, et deviennent pleinement acteurs de l’aménagement et de la protection des milieux marins.</p></div></div></div></div>
+<div class="pad-d fdx" id="f-fondamentaux"><div class="fdx-waves" aria-hidden="true"><svg viewBox="0 0 1600 600" preserveAspectRatio="none"><defs><linearGradient id="fdxg" x1="0" x2="1"><stop offset="0" stop-color="#00FFFF" stop-opacity="0"/><stop offset=".35" stop-color="#00FFFF" stop-opacity=".55"/><stop offset=".7" stop-color="#00B5B5" stop-opacity=".35"/><stop offset="1" stop-color="#00FFFF" stop-opacity="0"/></linearGradient></defs><g class="fdx-w1"><path d="M-400 380 C -200 300, 0 460, 200 380 S 600 300, 800 380 S 1200 460, 1400 380 S 1800 300, 2000 380"/></g><g class="fdx-w2"><path d="M-400 430 C -200 360, 0 500, 200 430 S 600 360, 800 430 S 1200 500, 1400 430 S 1800 360, 2000 430"/></g><g class="fdx-w3"><path d="M-400 300 C -200 250, 0 350, 200 300 S 600 250, 800 300 S 1200 350, 1400 300 S 1800 250, 2000 300"/></g></svg></div><div class="wide"><div class="eyebrow eyebrow-light">Nos fondamentaux</div><div class="fdm"><div class="fdm-i reveal"><div class="fdm-n">01</div><h3>Un outil de développement de nouvelles activités pour la pêche en Méditerranée.</h3><p>« Mare Durabilis » est un écosystème d’acteurs, de moyens et d’outils au service de la pêche en Méditerranée. Il couvre (à terme), en termes de structures juridiques, la totalité des moyens d’action et de financement nécessaires à l’organisation d’une pêche méditerranéenne rémunératrice, régénératrice et adaptative.</p></div><div class="fdm-i reveal"><div class="fdm-n">02</div><h3>Une redéfinition du métier et du rôle du pêcheur.</h3><p>Face aux évolutions du climat et des écosystèmes méditerranéens, confier aux pêcheurs des missions diversifiées permet de préserver durablement les revenus tout en allégeant la pression sur les populations marines, et en renforçant leur contribution à la connaissance et à la régénération des milieux.</p></div><div class="fdm-i reveal"><div class="fdm-n">03</div><h3>Une gestion de la Méditerranée par et pour les pêcheurs.</h3><p>Les pêcheurs sont, dans leur propre intérêt et dans celui des générations futures, les aménageurs et protecteurs naturels des milieux.</p><p>À travers des missions d’observation, de suivi, de restauration et de protection des écosystèmes, ils valorisent leurs compétences et leur connaissance du terrain dans le cadre de prestations de production ou de services, et deviennent pleinement acteurs de l’aménagement et de la protection des milieux marins.</p></div></div></div></div>
 <section class="manifeste" id="f-manifeste"><div class="wide">
   <div class="man-top">
    <div class="man-lead-col">
