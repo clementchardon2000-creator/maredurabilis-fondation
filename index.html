@@ -3575,6 +3575,75 @@ button.pc-chip{cursor:pointer;transition:background .2s,border-color .2s}button.
 @media(max-width:900px){.why-sec .stack{padding-left:62px}.why-sec .stack::before{left:19px}
  .why-sec .stack .rn{left:-62px;width:40px;height:40px;font-size:14px!important;box-shadow:0 0 0 6px var(--mist),0 0 18px rgba(0,255,255,.4)}
  .why-sec .stack .row h3{font-size:20px;margin-top:6px}}
+
+/* ===== fiche projet : trame « Carte d’identité » (nov. 2026) ===== */
+.pd{background:var(--mist);padding-bottom:80px}
+.pd-hero{position:relative;min-height:540px;display:flex;align-items:flex-end;background-size:cover;background-repeat:no-repeat;background-color:#0012B5}
+.pd-hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,18,181,.9) 0%,rgba(0,18,181,.6) 34%,rgba(0,18,181,0) 62%),linear-gradient(0deg,rgba(0,18,181,.65),rgba(0,18,181,0) 45%)}
+.pd-hin{position:relative;z-index:1;width:100%;padding-top:130px;padding-bottom:130px;color:#fff}
+.pd-hin .pf-back{color:rgba(255,255,255,.8)}
+.pd-tag{margin-top:26px;font:700 11.5px Mukta,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--turquoise)}
+.pd-hero h1{margin:14px 0 16px;max-width:18ch;font:800 clamp(36px,4.6vw,64px)/1.02 Mukta,sans-serif;color:#fff;text-shadow:0 4px 30px rgba(0,8,60,.35)}
+.pd-hero h1.pd-long{max-width:24ch;font-size:clamp(30px,3.4vw,50px);line-height:1.08}
+.pd-res{margin:0;max-width:580px;font:400 18.5px/1.6 Mulish,sans-serif;color:#E2E8FF}
+.pd-id{position:relative;z-index:3;margin-top:-84px;border-radius:22px;background:#fff;box-shadow:0 30px 70px rgba(0,18,90,.16);overflow:hidden}
+.pd-row{display:flex;align-items:stretch}
+.pd-c{all:unset;box-sizing:border-box;flex:1 1 0;min-width:0;display:flex;gap:16px;align-items:center;padding:26px 28px;border-right:1px solid var(--hairline)}
+button.pd-c{cursor:pointer;transition:background .2s}button.pd-c:hover{background:#F5F9FE}
+.pd-ring{flex:none;width:52px;height:52px;border-radius:50%;padding:2px;background:conic-gradient(from 200deg,var(--turquoise),var(--iris),var(--klein),var(--turquoise))}
+.pd-ring i{width:100%;height:100%;border-radius:50%;background:#fff;display:grid;place-items:center;font:800 14px/1 Mukta,sans-serif;font-style:normal;color:var(--klein);white-space:nowrap}
+.pd-c small,.pd-meta small{display:block;font:700 10px Mukta,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.pd-c b{display:block;margin-top:4px;font:700 16.5px/1.25 Mukta,sans-serif;color:var(--klein)}
+.pd-pulse{flex:none;width:10px;height:10px;border-radius:50%;background:#26E0A0;box-shadow:0 0 0 6px rgba(38,224,160,.2),0 0 16px #26E0A0}
+.pd-pulse.pd-w{background:#FFB23A;box-shadow:0 0 0 6px rgba(255,178,58,.22),0 0 16px #FFB23A}
+.pd-go{flex:1.35 1 0;display:flex;align-items:center;justify-content:center;padding:20px 22px;background:linear-gradient(120deg,#0012B5,#00369E)}
+.pd-go .pc-cta{font-size:14.5px;padding-left:20px;gap:12px;box-shadow:0 0 0 6px rgba(0,255,255,.14)}
+.pd-meta{display:flex;flex-wrap:wrap;gap:0;border-top:1px solid var(--hairline)}
+.pd-meta>div{flex:1 1 220px;padding:16px 28px;border-right:1px solid var(--hairline)}
+.pd-meta>div:last-child{border-right:0}
+.pd-meta b{display:block;margin-top:4px;font:700 17px/1.25 Mukta,sans-serif;color:var(--klein)}
+.pd-meta span{display:block;margin-top:3px;font:400 12.5px/1.45 Mulish,sans-serif;color:var(--muted)}
+.pd-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:20px;padding-top:40px}
+.pd-card{background:#fff;border-radius:22px;padding:36px 38px;box-shadow:0 10px 30px rgba(0,18,90,.05)}
+.pd-k{margin-bottom:16px;font:700 11.5px Mukta,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--iris)}
+.pd-txt p{margin:0 0 14px;max-width:none;font:400 16px/1.8 Mulish,sans-serif;color:var(--ink)}
+.pd-txt p:last-child{margin-bottom:0}
+.pd-txt .obj-highlight{display:block;margin:0 0 10px;padding:0!important;background:none!important;border:0!important;font:600 17px/1.55 Mukta,sans-serif;color:var(--klein)}
+.pd-c1{grid-column:span 8}.pd-c12{grid-column:span 12}
+.pd-c2{grid-column:span 4;background:linear-gradient(160deg,#0012B5,#002C8F 60%,#005A8C)}
+.pd-c2 .pd-k{color:var(--turquoise)}.pd-c2 .pd-txt p{color:#DCE5FF}.pd-c2.pd-lead .pd-txt p:first-child{font:600 19px/1.55 Mukta,sans-serif;color:#fff}
+.pd-c2 .obj-highlight{color:#fff}
+.pd-c3{grid-column:span 12;display:grid;grid-template-columns:260px minmax(0,1fr);gap:50px;align-items:start}
+.pd-c3 .pd-k{margin:4px 0 0}
+.pd-srv{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
+.pd-srv>div{position:relative;padding:22px 20px;border-radius:18px;background:var(--mist);overflow:hidden}
+.pd-srv>div::after{content:"";position:absolute;right:-30px;top:-30px;width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,rgba(0,255,255,.35),rgba(0,255,255,0) 70%)}
+.pd-srv svg{color:var(--klein)}
+.pd-srv b{display:block;margin:12px 0 6px;font:700 16px/1.25 Mukta,sans-serif;color:var(--klein)}
+.pd-srv span{font:400 13.5px/1.55 Mulish,sans-serif;color:var(--muted)}
+.pd-ul{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 40px}
+.pd-ul li{position:relative;padding:14px 0 14px 26px;border-bottom:1px solid var(--hairline);font:400 15.5px/1.6 Mulish,sans-serif;color:var(--ink)}
+.pd-ul li::before{content:"";position:absolute;left:2px;top:22px;width:9px;height:9px;border-radius:50%;background:var(--turquoise);box-shadow:0 0 0 4px rgba(0,255,255,.18)}
+.pd-don{grid-column:span 12;display:flex;justify-content:space-between;align-items:center;gap:30px;background:#fff;border-radius:22px;padding:28px 38px}
+.pd-don b{display:block;font:700 20px Mukta,sans-serif;color:var(--klein)}
+.pd-don span{display:block;margin-top:4px;font:400 15px/1.5 Mulish,sans-serif;color:var(--muted)}
+.pd-dbtn{all:unset;cursor:pointer;flex:none;font:700 15px Mukta,sans-serif;color:#fff;background:var(--klein);padding:14px 24px;border-radius:999px;transition:background .2s}
+.pd-dbtn:hover{background:#0019d9}
+@media(max-width:900px){
+ .pd-hero{min-height:440px}.pd-hin{padding-top:100px;padding-bottom:110px}.pd-res{font-size:16.5px}
+ .pd-row{flex-direction:column}.pd-c{border-right:0;border-bottom:1px solid var(--hairline);padding:18px 22px}
+ .pd-go .pc-cta{white-space:normal}
+ .pd-meta>div{border-right:0;border-bottom:1px solid var(--hairline);padding:14px 22px}
+ .pd-grid{grid-template-columns:1fr;gap:14px;padding-top:24px}
+ .pd-c1,.pd-c2,.pd-c3,.pd-c12,.pd-don{grid-column:auto}
+ .pd-card{padding:26px 22px}.pd-c3{grid-template-columns:1fr;gap:6px}
+ .pd-ul{grid-template-columns:1fr}.pd-don{flex-direction:column;align-items:flex-start;padding:24px 22px}
+}
+
+.pd-ao{cursor:default!important}
+.pd-ao:hover{transform:none!important}.pd-ao:hover i{transform:none!important}
+.pd-ao>span{display:flex;flex-direction:column;gap:4px;line-height:1}
+.pd-ao small{font:700 9.5px Mukta,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:rgba(0,18,181,.6)}
 </style>
 </head>
 <body>
@@ -4644,12 +4713,7 @@ var PHOTOS = {
   mn: 'img/186f9f198c.jpg',
   fw: 'img/pg_p2_poissons.webp'
 };
-var DOSSIERS = {
-  oh: {url:'docs/Dossier_projet_Palangre_intelligente.zip', name:'Dossier_projet_Palangre_intelligente.zip'},
-  mc: {url:'docs/MareCollect_Calendrier.zip', name:'MareCollect_Calendrier.zip'},
-  fw: {url:'docs/FishWind_Structuration_projet.zip', name:'FishWind_Structuration_projet.zip'},
-  mn: {url:'docs/Dossier_projet_Chalutier.zip', name:'Dossier_projet_Chalutier.zip'},
-};
+var DOSSIERS = {};
 var PROJETS = {
   oh:{num:'01',tag:'S&eacute;lectivit&eacute; &middot; Palangre',titre:'Palangre intelligente',resume:"Capteur intelligent sur palangre&nbsp;: reconnaissance automatique des esp&egrave;ces, lib&eacute;ration des captures non d&eacute;sir&eacute;es, information en temps r&eacute;el sans cam&eacute;ra.",goal:1700000,statClass:['','',''],fillClass:'jf-k',stats:[{n:'2027',l:'D&eacute;marrage pr&eacute;vu'},{n:'5 ans',l:'Dur&eacute;e'},{n:'+5&nbsp;000',l:'Navires concern&eacute;s'}],desc:"Les captures accessoires repr&eacute;sentent un enjeu majeur pour les palangriers m&eacute;diterran&eacute;ens ciblant les thonid&eacute;s. Raies, requins et esp&egrave;ces non cibl&eacute;es se retrouvent accroch&eacute;s sans solution efficace.",solution:["Reconnaissance automatique des esp&egrave;ces par capteur (sans cam&eacute;ra)","Lib&eacute;ration automatique des captures non d&eacute;sir&eacute;es","Information en temps r&eacute;el&nbsp;: thons accroch&eacute;s avant remont&eacute;e de la ligne","Dispositif robuste, simple &agrave; utiliser en conditions r&eacute;elles de mer"],avantage:"Un int&eacute;r&ecirc;t pour les p&ecirc;cheurs&nbsp;: moins de remont&eacute;es &agrave; vide, moins de captures accidentelles",partenaires:[{n:'CNRS &middot; Porteur',c:''},{n:'Ifremer',c:'b'},{n:'Mare Durabilis',c:'b'},{n:'WWF (en discussion)',c:'i'}]},
   mc:{num:'02',tag:'D&eacute;pollution &middot; P&ecirc;cheurs prestataires',titre:'Mare Collect',resume:"R&eacute;mun&eacute;rer les p&ecirc;cheurs &agrave; la d&eacute;barque pour les d&eacute;chets plastiques remont&eacute;s dans leurs filets.",goal:300000,statClass:['iris','iris','iris'],fillClass:'jf-i',stats:[{n:'01',l:'Une action du programme Prévenir et réduire les pollutions en milieu marin'},{n:'02',l:'Un travail reconnu et r&eacute;mun&eacute;r&eacute;'},{n:'03',l:'Pilote &agrave; la cri&eacute;e du Grau d&rsquo;Agde'}],desc:"Mare Collect s&rsquo;inscrit dans le programme Prévenir et réduire les pollutions en milieu marin. Lorsqu&rsquo;un chalut remonte du plastique enfoui sur les fonds, le trier et le conserver &agrave; bord pour le rapporter &agrave; quai prend du temps &mdash; un temps compt&eacute;, dans un m&eacute;tier o&ugrave; chaque geste l&rsquo;est. Nous voulons reconna&icirc;tre ce travail de d&eacute;pollution et le r&eacute;mun&eacute;rer. Les p&ecirc;cheurs deviennent ici des prestataires qui nettoient les fonds marins&nbsp;; la r&eacute;mun&eacute;ration valorise leur r&ocirc;le et apporte un appui bienvenu &agrave; une fili&egrave;re confront&eacute;e &agrave; de fortes difficult&eacute;s &eacute;conomiques.",solution:["Mare Durabilis conduit et finance l&rsquo;action, par l&rsquo;interm&eacute;diaire de la cri&eacute;e o&ugrave; le plastique est d&eacute;barqu&eacute;","Les p&ecirc;cheurs sont r&eacute;mun&eacute;r&eacute;s &agrave; la d&eacute;barque pour le plastique rapport&eacute;","Pilote &agrave; la cri&eacute;e du Grau d&rsquo;Agde, seule cri&eacute;e o&ugrave; le tri s&eacute;lectif est fait sur place","Des donn&eacute;es fiables et ind&eacute;pendantes, sans reposer sur un dispositif ext&eacute;rieur"],avantage:"<span class='obj-highlight'>Objectif du pilote&nbsp;: v&eacute;rifier que la r&eacute;mun&eacute;ration augmente les volumes de plastique rapport&eacute;s &agrave; quai.</span> Nous d&eacute;marrons au Grau d&rsquo;Agde parce que c&rsquo;est la seule cri&eacute;e o&ugrave; le tri s&eacute;lectif est effectu&eacute; sur place&nbsp;: les donn&eacute;es y sont fiables et ind&eacute;pendantes de tout dispositif ext&eacute;rieur. Si le r&eacute;sultat se confirme, le mod&egrave;le pourra &ecirc;tre &eacute;tendu &agrave; d&rsquo;autres cri&eacute;es de la fa&ccedil;ade.",budget:{intro:"Le pilote se d&eacute;roule au Grau d&rsquo;Agde, un port volontairement modeste&nbsp;: 7 chalutiers y d&eacute;barquent environ 700&nbsp;tonnes de poisson par an, l&rsquo;ordre de grandeur d&rsquo;une p&ecirc;che tr&egrave;s artisanale. C&rsquo;est l&rsquo;&eacute;chelle id&eacute;ale pour un premier test ma&icirc;tris&eacute;.",lignes:[{k:'7 chalutiers',v:'pour environ 700&nbsp;t de poisson d&eacute;barqu&eacute;es par an'},{k:'20&nbsp;000&nbsp;&euro; par an',v:'enveloppe pr&eacute;vue pour le pilote&nbsp;: assez pour rendre la prime incitative, sans faire exploser le budget'},{k:'R&eacute;partition',v:'entre les navires, selon les jours de mer ou le volume de poisson d&eacute;barqu&eacute; &mdash; &agrave; d&eacute;finir avec le directeur de la cri&eacute;e'}]},partenaires:[{n:'Mare Durabilis &middot; Porteur unique',c:''},{n:'Cri&eacute;e du Grau d&rsquo;Agde',c:'b'}]},
@@ -4858,43 +4922,49 @@ function renderDetail(key){
   var ARW='<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   var DWN='<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19h14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   var cta=p.site?'<a class="pc-cta" href="'+p.site.url+'" target="_blank" rel="noopener"><span>'+p.site.label+'</span><i>'+ARW+'</i></a>'
-    :(dossier?'<a class="pc-cta" href="'+dossier.url+'" download="'+dossier.name+'"><span>Dossier de constitution du projet</span><i>'+DWN+'</i></a>':'');
-  // pastilles
+    :'<span class="pc-cta pd-ao" title="En cours de rédaction"><span>Appel d’offres<small>En cours de rédaction</small></span><i><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></i></span>';
+  // carte d'identité
   var st=null;rep.forEach(function(r){if(r.k==='Statut')st=r;});
-  var chips=st?'<span class="pc-chip"><i class="pc-dot"></i>'+st.v+'</span>'
-    :(p.site?'<span class="pc-chip"><i class="pc-dot"></i>En ligne</span>':'<span class="pc-chip"><i class="pc-dot pc-w"></i>Appel d’offres en cours de rédaction</span>');
-  rep.forEach(function(r){if(r.k==='Programme'||r.k==='Statut')return;
-    chips+='<span class="pc-chip"><small>'+r.k.replace(' Mare Durabilis','')+'</small>'+r.v+(r.n?'<em>'+r.n+'</em>':'')+'</span>';});
-  if(L.p)chips+='<button type="button" class="pc-chip" onclick="goProg(\''+L.t+'\')"><small>Programme</small>'+L.p+' · '+L.pn+'</button>';
-  var por=(p.partenaires||[]).filter(function(x){return x.r==='Porteur'||x.r==='Commanditaire';})[0];
-  if(por)chips+='<span class="pc-chip"><small>'+por.r+'</small>'+por.n+'</span>';
-  // sections
+  var stTxt=st?st.v:(p.site?'Plateforme en ligne':'Appel d’offres en cours de rédaction');
+  var an=(L.a||'').replace(/^Actions? n°/,'').replace(/ et /g,' · ');
+  var id='';
+  if(L.p)id+='<button type="button" class="pd-c" onclick="goProg(\''+L.t+'\')"><span class="pd-ring"><i>'+L.p+'</i></span><span><small>Programme</small><b>'+L.pn+'</b></span></button>';
+  if(L.a)id+='<div class="pd-c"><span class="pd-ring"><i>'+an+'</i></span><span><small>'+(/^Actions/.test(L.a)?'Actions':'Action')+'</small><b>'+(L.ax||L.a)+'</b></span></div>';
+  id+='<div class="pd-c"><i class="pd-pulse'+(p.site||st?'':' pd-w')+'"></i><span><small>Statut</small><b>'+stTxt+'</b></span></div>';
+  id+='<div class="pd-go">'+cta+'</div>';
+  var meta=rep.filter(function(r){return r.k!=='Programme'&&r.k!=='Statut';}).map(function(r){
+    return'<div><small>'+r.k+'</small><b>'+r.v+'</b>'+(r.n?'<span>'+r.n+'</span>':'')+'</div>';}).join('');
+  // contenus
   var ICO=['<path d="M3 17c3 2 6 2 9 0s6-2 9 0M5 13l2-6h10l2 6M9 7V4h6v3"/>','<circle cx="12" cy="12" r="3"/><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/>','<path d="M9 3h6M10 3v6l-5 9a2 2 0 002 3h10a2 2 0 002-3l-5-9V3"/>','<path d="M12 2v6M12 22a7 7 0 01-7-7h3M12 22a7 7 0 007-7h-3M12 8a2 2 0 100-4 2 2 0 000 4z"/>','<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>'];
   var sl=p.solution||[],sol='';
   if(sl.length&&sl.every(function(x){return /^<b>[\s\S]*?<\/b>\s*—\s*/.test(x);}))
-    sol='<div class="pc-srv">'+sl.map(function(x,i){var m=x.match(/^<b>([\s\S]*?)<\/b>\s*—\s*([\s\S]*)$/);
+    sol='<div class="pd-srv">'+sl.map(function(x,i){var m=x.match(/^<b>([\s\S]*?)<\/b>\s*—\s*([\s\S]*)$/);
       return'<div><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+ICO[i%ICO.length]+'</svg><b>'+m[1]+'</b><span>'+m[2]+'</span></div>';}).join('')+'</div>';
-  else if(sl.length)sol='<ul class="pc-ul">'+sl.map(function(x){return'<li>'+x+'</li>';}).join('')+'</ul>';
+  else if(sl.length)sol='<ul class="pd-ul">'+sl.map(function(x){return'<li>'+x+'</li>';}).join('')+'</ul>';
   var logos=(p.partenaires||[]).map(function(pt){var img=LOGOS[pt.n];
     return'<div class="pf-logo">'+(img?'<img loading="lazy" decoding="async" src="'+img+'" alt="'+pt.n+'">':'<span class="lname">'+pt.n+'</span>')+(pt.r?'<span class="lrole">'+pt.r+'</span>':'')+'</div>';}).join('');
-  var txt=function(t){return t?'<div class="pc-txt"><p>'+t+'</p></div>':'';};
-  var lead=function(t){return t&&t.split('</p>')[0].replace(/<[^>]+>|&[a-z]+;/g,'x').length<330?1:0;};
-  var S=[['Le contexte',txt(p.desc),lead(p.desc)],['L’ambition',txt(p.ambition),lead(p.ambition)],['Le projet',txt(p.projet)],[p.solTitle||'Nos actions',sol,0,1],['Impact attendu',txt(p.avantage)],['Partenaires du projet',logos?'<div class="pf-logos">'+logos+'</div>':'',0,1]].filter(function(x){return x[1];});
-  var flow=S.map(function(x,i){return'<section class="pc-st'+(x[2]?' pc-big':'')+(x[3]?' pc-full':'')+'"><div class="pc-n">'+('0'+(i+1)).slice(-2)+'</div><h2>'+x[0]+'</h2>'+x[1]+'</section>';}).join('');
-  var tag=[mode?(mode==='Projet soutenu'?'Projet soutenu':'Projet opéré'):'',L.p||'',L.a||''].filter(Boolean).join(' · ');
-  det.innerHTML=
-   '<div class="pc-hero"><div class="pc-ph" style="background-image:url(\''+photo+'\');'+ps+'"></div>'+
-    '<div class="pc-hin wide">'+
+  var T=function(t){return'<div class="pd-txt"><p>'+t+'</p></div>';};
+  var dark=p.ambition?['L’ambition',p.ambition]:(p.avantage?['Impact attendu',p.avantage]:null);
+  var n=0,K=function(t){n++;return'<div class="pd-k">'+('0'+n).slice(-2)+' — '+t+'</div>';};
+  var g='';
+  if(p.desc)g+='<div class="pd-card '+(dark?'pd-c1':'pd-c12')+'">'+K('Le contexte')+T(p.desc)+'</div>';
+  var lead=dark&&!/obj-highlight/.test(dark[1])&&dark[1].split('</p>')[0].replace(/<[^>]+>|&[a-z]+;/g,'x').length<330;
+  if(dark)g+='<div class="pd-card pd-c2'+(lead?' pd-lead':'')+'">'+K(dark[0])+T(dark[1])+'</div>';
+  if(p.projet)g+='<div class="pd-card pd-c3"><div>'+K('Le projet')+'</div>'+T(p.projet)+'</div>';
+  if(sol)g+='<div class="pd-card pd-c12">'+K(p.solTitle||'Nos actions')+sol+'</div>';
+  if(p.avantage&&p.ambition)g+='<div class="pd-card pd-c3"><div>'+K('Impact attendu')+'</div>'+T(p.avantage)+'</div>';
+  if(logos)g+='<div class="pd-card pd-c12">'+K('Partenaires du projet')+'<div class="pf-logos">'+logos+'</div></div>';
+  g+='<div class="pd-don"><div><b>Soutenir '+(p.court||p.titre)+'</b><span>Votre don finance directement ce projet au bénéfice de la pêche méditerranéenne.</span></div><button type="button" class="pd-dbtn" onclick="openDon(\''+key+'\')">Faire un don →</button></div>';
+  det.innerHTML='<div class="pd">'+
+   '<div class="pd-hero" style="background-image:url(\''+photo+'\');'+ps+'">'+
+    '<div class="pd-hin wide">'+
      '<button class="pf-back" onclick="goListe()">← Tous les projets</button>'+
-     '<div class="pc-tag">'+tag+'</div><h1'+(p.titre.length>34?' class="pc-long"':'')+'>'+p.titre+'</h1>'+
-     (p.hideResume?'':'<p class="pc-res">'+(p.heroRes||p.resume)+'</p>')+cta+
-     '<div class="pc-chips">'+chips+'</div>'+
+     (mode?'<div class="pd-tag">Projet opéré par Mare Durabilis</div>':'')+
+     '<h1'+(p.titre.length>34?' class="pd-long"':'')+'>'+p.titre+'</h1>'+
+     (p.hideResume?'':'<p class="pd-res">'+(p.heroRes||p.resume)+'</p>')+
     '</div></div>'+
-   '<div class="wide"><div class="pc-flow">'+flow+'</div></div>'+
-   '<section class="pc-band"><div class="wide pc-bin"><div><h3>'+(p.site?'Embarquer avec '+p.titre:'Soutenir '+(p.court||p.titre))+'</h3>'+
-     '<p>'+(p.site?'Réservez un navire sur la plateforme, ou soutenez le projet : votre don finance directement ce projet au bénéfice de la pêche méditerranéenne.':'Votre don finance directement ce projet au bénéfice de la pêche méditerranéenne.')+'</p></div>'+
-     '<div class="pc-acts">'+(cta?'<button type="button" class="pc-ghost" onclick="openDon(\''+key+'\')">Faire un don</button>'+cta
-       :'<button type="button" class="pc-cta pc-cta-b" onclick="openDon(\''+key+'\')"><span>Faire un don</span><i>'+ARW+'</i></button>')+'</div></div></section>';
+   '<div class="wide"><div class="pd-id"><div class="pd-row">'+id+'</div>'+(meta?'<div class="pd-meta">'+meta+'</div>':'')+'</div>'+
+   '<div class="pd-grid">'+g+'</div></div></div>';
 }
 
 // Don
