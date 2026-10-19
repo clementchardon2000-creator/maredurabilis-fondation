@@ -3769,6 +3769,14 @@ button.pd-c{cursor:pointer;transition:background .2s}button.pd-c:hover{backgroun
  #pop-ov[data-dsf="p1"] .pop-body,#pop-ov[data-dsf="p2"] .pop-body,#pop-ov[data-dsf="p3"] .pop-body,#pop-ov[data-dsf="p4"] .pop-body{padding:24px 18px 34px!important}
  .pgv .pgv-obj{font-size:18px}}
 @media(max-width:700px){.pgv .pgv-t td.pg-tp{display:flex}.pgv .pgv-t{border-radius:10px}.pgv .pgv-t td{border-left:0!important}.pgv .pgv-t td.pg-tx{width:auto;background:#fff;border-top:2px solid var(--pv-navy)}.pgv .pgv-t tbody tr:first-child td.pg-tx{border-top:0}.pgv .pgv-t td.pg-num{padding:16px 20px 0;border-top:1px solid var(--pv-line)}.pgv .pgv-t td.pg-ta{padding-top:10px;border-top:0}.pgv .pgv-t td.pg-tp{border-top:0;padding-top:4px}.pgv .pgv-t td.pg-tp{width:auto}}
+
+/* ===== pop-ups des 4 spécificités : largeur calée sur la hauteur d'écran, juste assez pour voir tout le schéma (oct. 2026) ===== */
+@media(min-width:901px){
+#pop-ov.pop-big[data-pop="p01"] .pop-wrap{width:min(100%,2100px,calc(2 * 100vh))}
+#pop-ov.pop-big[data-pop="p02"] .pop-wrap{width:min(100%,2100px,calc(2 * 100vh))}
+#pop-ov.pop-big[data-pop="p03"] .pop-wrap{width:min(100%,2100px,calc(2.05 * 100vh))}
+#pop-ov.pop-big[data-pop="p04"] .pop-wrap{width:min(100%,2100px,calc(1.8 * 100vh))}
+}
 </style>
 </head>
 <body>
@@ -5200,6 +5208,7 @@ function openPop(id,tile){
   document.getElementById('pop-n').textContent=(tile.querySelector('.tn')||{}).textContent||'';
   document.getElementById('pop-t').textContent=(tile.querySelector('h3')||{}).textContent||'';
   document.getElementById('pop-body').innerHTML=tpl.innerHTML;
+  ov.setAttribute('data-pop',id);
   popLead(true);
   ov.classList.add('open');ov.setAttribute('aria-hidden','false');
   document.documentElement.style.overflow='hidden';
@@ -5209,6 +5218,7 @@ function openDsf(id,num,title){
  var ov=document.getElementById('pop-ov'),tpl=document.getElementById('dsf-'+id);if(!ov||!tpl)return;
  document.getElementById('pop-n').textContent=num;document.getElementById('pop-t').textContent=title;
  document.getElementById('pop-body').innerHTML=tpl.innerHTML;
+ ov.removeAttribute('data-pop');
  popLead(false);
  ov.setAttribute('data-dsf',id);
  ov.classList.add('open');ov.setAttribute('aria-hidden','false');document.documentElement.style.overflow='hidden';
