@@ -3662,6 +3662,14 @@ button.pd-c{cursor:pointer;transition:background .2s}button.pd-c:hover{backgroun
 #appels[data-prog="t1"] .aap-duo{opacity:0}
 #appels[data-prog="t1"] .aap-img:not([class*="aap-img-"]),#appels[data-prog="t3"] .aap-img:not([class*="aap-img-"]),#appels[data-prog="t4"] .aap-img:not([class*="aap-img-"]){opacity:0!important;transition:opacity .7s ease}
 #appels[data-prog="t3"] .aap-img-p1{background-position:50% 50%!important}
+/* P1, P3, P4 : la photo s'étend vers la gauche autant que son cadrage le permet (recadrage en hauteur, sujet conservé) */
+@media(min-width:901px){
+#appels[data-prog="t3"] .aap-img-p1{aspect-ratio:2.2/1!important;background-position:50% 62%!important}
+#appels[data-prog="t1"] .aap-img-p3{aspect-ratio:1.95/1!important;background-position:50% 100%!important}
+#appels[data-prog="t4"] .aap-img-p4{aspect-ratio:2.6/1!important;background-position:50% 48%!important}
+#appels[data-prog="t3"] .aap-img-p1,#appels[data-prog="t1"] .aap-img-p3,#appels[data-prog="t4"] .aap-img-p4{max-width:calc(100% - 420px)}
+#appels[data-prog="t3"] .aap-img-p1,#appels[data-prog="t1"] .aap-img-p3,#appels[data-prog="t4"] .aap-img-p4{-webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.4) 9%,rgba(0,0,0,.85) 18%,#000 26%)!important;mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.4) 9%,rgba(0,0,0,.85) 18%,#000 26%)!important}
+}
 /* ===== fiche projet : jauge de financement, chiffres clés, citation, étapes ===== */
 .pd-fin{display:grid;grid-template-columns:330px minmax(0,1fr);gap:50px;align-items:center;padding:30px 34px 28px;border-top:1px solid var(--hairline)}
 .pd-fl small{display:block;font:700 10px Mukta,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
