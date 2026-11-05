@@ -3328,6 +3328,8 @@ body.dw-lock{overflow:hidden}
 .ob3::before,.ob3::after{content:"";position:absolute;width:22px;height:22px;border:3px solid var(--turquoise);z-index:2}
 .ob3::before{top:-7px;left:-7px;border-right:0;border-bottom:0}.ob3::after{bottom:-7px;right:-7px;border-left:0;border-top:0}
 @media(max-width:900px){.objet-box.ob3{grid-template-columns:1fr;gap:8px}.ob3 .ob-k{border-right:0;padding-right:0}}
+/* Accueil : objet du fonds remonté sous l’accroche (nov. 2026) */
+@media(min-width:901px){#accueil .objet-band{bottom:18vh!important}}
 /* Notre raison d’être : texte en deux colonnes (nov. 2026) */
 .rB{background:#fff;padding:64px 0 70px}
 .rB-cols{columns:2;column-gap:56px}
@@ -3335,8 +3337,6 @@ body.dw-lock{overflow:hidden}
 .rB-cols p b{font-weight:700;color:var(--klein)}
 .rB-btn{margin-top:10px;margin-left:calc(50% + 28px)}
 @media(max-width:900px){.rB{padding:40px 0 48px}.rB-cols{columns:1}.rB-btn{margin-left:0}}
-/* Accueil : hauteur de la photo réduite pour remonter l’objet du fonds (nov. 2026) */
-@media(min-width:901px){#accueil .hero-photo{min-height:0!important;background-position:center 22%!important}#accueil .hero-photo .hero-inner{padding:250px 0 200px!important}}
 .ftri-row{display:flex;gap:14px;height:580px}
 .ftv{position:relative;flex:1;min-width:0;border-radius:10px;overflow:hidden;background-size:cover;cursor:pointer;transition:flex .65s cubic-bezier(.22,.61,.36,1)}
 .ftv.on{flex:2.1}
